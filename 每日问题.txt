@@ -1,0 +1,6 @@
+2019/2/20
+1.TestDao.xml中的14行查询没有加入league的信息
+2.继承GenericDao接口的时候，在Member.java中加了implements Serializable
+问题：
+1.mybatis-generator自动生成的.xml文件中并没有采用表连接的查询方式，而且看上去有些复杂，是采用然后在加上一些方法，
+还是全部都由自己来写实用一些呢

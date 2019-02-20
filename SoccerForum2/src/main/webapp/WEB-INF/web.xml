@@ -9,18 +9,18 @@
 	id="WebApp_ID" 
 	version="4.0">
   <display-name>Archetype Created Web Application</display-name>
-<context-param>
-	<param-name>contextConfigLocation</param-name>
-	<param-value>classpath*:spring/spring-config.xml</param-value>
-</context-param>
-<!-- 声明使用spring管理整个的项目 -->
-<listener>
-	<listener-class>
-		org.springframework.web.context.ContextLoaderListener
-	</listener-class>
-</listener>
-<!-- 声明springmvc的相关配置 -->
-<!-- 声明当前项目的主控Servlet -->
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>classpath*:spring/spring-config.xml</param-value>
+  </context-param>
+  <!--  -->
+  <listener>
+  <listener-class>
+  	org.springframework.web.context.ContextLoaderListener
+  </listener-class>
+  </listener>
+  
+    <!-- 声明当前项目的主控Servlet -->
   <servlet>
   	<!-- Spring MVC 主控Servlet -->
   	<servlet-name>SoccerForum</servlet-name>
@@ -40,4 +40,7 @@
   	<!-- 表示拦截所有的url请求，并交给 名为 hello 的 servlet-class 指定的DispatcherServlet -->
   	<url-pattern>/</url-pattern>
   </servlet-mapping>
+   <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
 </web-app>
