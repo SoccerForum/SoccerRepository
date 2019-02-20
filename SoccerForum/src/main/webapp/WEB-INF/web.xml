@@ -40,4 +40,7 @@
   	<!-- 表示拦截所有的url请求，并交给 名为 hello 的 servlet-class 指定的DispatcherServlet -->
   	<url-pattern>/</url-pattern>
   </servlet-mapping>
+   <welcome-file-list>
+    <welcome-file>index.jsp</welcome-file>
+  </welcome-file-list>
 </web-app>

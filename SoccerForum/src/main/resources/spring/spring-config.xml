@@ -31,7 +31,7 @@
 		<!-- 声明视图解析器，完成逻辑视图名和物理视图资源的绑定 -->
 		<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 			<!-- 绑定方式：将给出的视图逻辑（资源）名和下列给出的前缀和后缀绑定，申明物理视图资源名称 -->
-			<property name="prefix" value="/WEB-INF/page/"/>
+			<property name="prefix" value="/WEB-INF/views/"/>
 			<property name="suffix" value=".jsp"/>
 		</bean>
 	<!-- 加载属性配置文件 -->

@@ -311,4 +311,7 @@
       pv = #{pv,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="getAll" resultMap="UserMap">
+  	SELECT * FROM users
+  </select>
 </mapper>
