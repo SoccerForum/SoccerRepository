@@ -1,7 +1,10 @@
 package com.demo.domain.po;
 
+import org.omg.CORBA.UserException;
+
 public class Post {
-    private Integer id;
+
+	private Integer id;
 
     private Integer userid;
 
@@ -12,7 +15,13 @@ public class Post {
     private Integer visitid;
 
     private String context;
-
+    
+    private Visit visit;
+    
+    private User user;
+    
+    private League league;
+    
     public Integer getId() {
         return id;
     }
@@ -60,4 +69,14 @@ public class Post {
     public void setContext(String context) {
         this.context = context == null ? null : context.trim();
     }
+
+	public Post() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Post [id=" + id + ", title=" + title + ", context=" + context + ", visit=" + visit.getPv() + " " + visit.getComment() + " " + visit.getLike() + ", user=" + user.getName() + ", league=" + league.getName() + "]";
+	}
+        
 }

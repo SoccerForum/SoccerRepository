@@ -11,6 +11,8 @@ public class Member {
 
     private Integer teamid;
 
+    private Team team;
+    
     public Integer getId() {
         return id;
     }
@@ -50,4 +52,15 @@ public class Member {
     public void setTeamid(Integer teamid) {
         this.teamid = teamid;
     }
+
+	public Member() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Member [id=" + id + ", name=" + name + ", role=" + role + ", num=" + num + ", "
+				+ "team=" + team.getName() + "]";
+	}
+    
 }

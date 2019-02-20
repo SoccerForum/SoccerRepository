@@ -1,23 +1,23 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.demo.dao.PostMapper" >
-  <resultMap id="BaseResultMap" type="com.demo.domain.po.Post" >
-    <id column="id" property="id" jdbcType="INTEGER" />
-    <result column="userId" property="userid" jdbcType="INTEGER" />
-    <result column="title" property="title" jdbcType="VARCHAR" />
-    <result column="leagueId" property="leagueid" jdbcType="INTEGER" />
-    <result column="visitId" property="visitid" jdbcType="INTEGER" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.demo.dao.PostMapper">
+  <resultMap id="BaseResultMap" type="com.demo.domain.po.Post">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="leagueId" jdbcType="INTEGER" property="leagueid" />
+    <result column="visitId" jdbcType="INTEGER" property="visitid" />
   </resultMap>
-  <resultMap id="ResultMapWithBLOBs" type="com.demo.domain.po.Post" extends="BaseResultMap" >
-    <result column="context" property="context" jdbcType="LONGVARCHAR" />
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.demo.domain.po.Post">
+    <result column="context" jdbcType="LONGVARCHAR" property="context" />
   </resultMap>
-  <sql id="Base_Column_List" >
+  <sql id="Base_Column_List">
     id, userId, title, leagueId, visitId
   </sql>
-  <sql id="Blob_Column_List" >
+  <sql id="Blob_Column_List">
     context
   </sql>
-  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
     select 
     <include refid="Base_Column_List" />
     ,
@@ -25,11 +25,11 @@
     from posts
     where id = #{id,jdbcType=INTEGER}
   </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from posts
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.demo.domain.po.Post" >
+  <insert id="insert" parameterType="com.demo.domain.po.Post">
     insert into posts (id, userId, title, 
       leagueId, visitId, context
       )
@@ -37,71 +37,71 @@
       #{leagueid,jdbcType=INTEGER}, #{visitid,jdbcType=INTEGER}, #{context,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.demo.domain.po.Post" >
+  <insert id="insertSelective" parameterType="com.demo.domain.po.Post">
     insert into posts
-    <trim prefix="(" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         id,
       </if>
-      <if test="userid != null" >
+      <if test="userid != null">
         userId,
       </if>
-      <if test="title != null" >
+      <if test="title != null">
         title,
       </if>
-      <if test="leagueid != null" >
+      <if test="leagueid != null">
         leagueId,
       </if>
-      <if test="visitid != null" >
+      <if test="visitid != null">
         visitId,
       </if>
-      <if test="context != null" >
+      <if test="context != null">
         context,
       </if>
     </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides="," >
-      <if test="id != null" >
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="userid != null" >
+      <if test="userid != null">
         #{userid,jdbcType=INTEGER},
       </if>
-      <if test="title != null" >
+      <if test="title != null">
         #{title,jdbcType=VARCHAR},
       </if>
-      <if test="leagueid != null" >
+      <if test="leagueid != null">
         #{leagueid,jdbcType=INTEGER},
       </if>
-      <if test="visitid != null" >
+      <if test="visitid != null">
         #{visitid,jdbcType=INTEGER},
       </if>
-      <if test="context != null" >
+      <if test="context != null">
         #{context,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.demo.domain.po.Post" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.domain.po.Post">
     update posts
-    <set >
-      <if test="userid != null" >
+    <set>
+      <if test="userid != null">
         userId = #{userid,jdbcType=INTEGER},
       </if>
-      <if test="title != null" >
+      <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
       </if>
-      <if test="leagueid != null" >
+      <if test="leagueid != null">
         leagueId = #{leagueid,jdbcType=INTEGER},
       </if>
-      <if test="visitid != null" >
+      <if test="visitid != null">
         visitId = #{visitid,jdbcType=INTEGER},
       </if>
-      <if test="context != null" >
+      <if test="context != null">
         context = #{context,jdbcType=LONGVARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.demo.domain.po.Post" >
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.demo.domain.po.Post">
     update posts
     set userId = #{userid,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},
@@ -110,7 +110,124 @@
       context = #{context,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.demo.domain.po.Post" >
+  <update id="updateByPrimaryKey" parameterType="com.demo.domain.po.Post">
+    update posts
+    set userId = #{userid,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      leagueId = #{leagueid,jdbcType=INTEGER},
+      visitId = #{visitid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <resultMap id="BaseResultMap" type="com.demo.domain.po.Post">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="leagueId" jdbcType="INTEGER" property="leagueid" />
+    <result column="visitId" jdbcType="INTEGER" property="visitid" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.demo.domain.po.Post">
+    <result column="context" jdbcType="LONGVARCHAR" property="context" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, userId, title, leagueId, visitId
+  </sql>
+  <sql id="Blob_Column_List">
+    context
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from posts
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from posts
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.demo.domain.po.Post">
+    insert into posts (id, userId, title, 
+      leagueId, visitId, context
+      )
+    values (#{id,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, 
+      #{leagueid,jdbcType=INTEGER}, #{visitid,jdbcType=INTEGER}, #{context,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.demo.domain.po.Post">
+    insert into posts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="leagueid != null">
+        leagueId,
+      </if>
+      <if test="visitid != null">
+        visitId,
+      </if>
+      <if test="context != null">
+        context,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="leagueid != null">
+        #{leagueid,jdbcType=INTEGER},
+      </if>
+      <if test="visitid != null">
+        #{visitid,jdbcType=INTEGER},
+      </if>
+      <if test="context != null">
+        #{context,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.demo.domain.po.Post">
+    update posts
+    <set>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="leagueid != null">
+        leagueId = #{leagueid,jdbcType=INTEGER},
+      </if>
+      <if test="visitid != null">
+        visitId = #{visitid,jdbcType=INTEGER},
+      </if>
+      <if test="context != null">
+        context = #{context,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.demo.domain.po.Post">
+    update posts
+    set userId = #{userid,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      leagueId = #{leagueid,jdbcType=INTEGER},
+      visitId = #{visitid,jdbcType=INTEGER},
+      context = #{context,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.demo.domain.po.Post">
     update posts
     set userId = #{userid,jdbcType=INTEGER},
       title = #{title,jdbcType=VARCHAR},

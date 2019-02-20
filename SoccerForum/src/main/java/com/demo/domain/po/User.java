@@ -1,5 +1,8 @@
 package com.demo.domain.po;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class User {
     private Integer id;
 
@@ -19,6 +22,12 @@ public class User {
 
     private String bio;
 
+    private Set<Post> posts = new HashSet<Post>();
+    
+    private Set<Focususer> focususers = new HashSet<Focususer>();
+    
+    private Set<Collector> collectors = new HashSet<Collector>();
+    
     public Integer getId() {
         return id;
     }
@@ -90,4 +99,17 @@ public class User {
     public void setBio(String bio) {
         this.bio = bio == null ? null : bio.trim();
     }
+
+	public User() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", name=" + name + ", pwd=" + pwd + ", money=" + money + ", avatar=" + avatar
+				+ ", sightml=" + sightml + ", gender=" + gender + ", pv=" + pv + ", bio=" + bio + ", posts=" + posts.size()
+				+ ", focususers=" + focususers.size() + ", collectors=" + collectors.size() + "]";
+	}
+    
+    
 }

@@ -7,6 +7,8 @@ public class Focususer {
 
     private Integer userid;
 
+    private User user;
+    
     public Integer getId() {
         return id;
     }
@@ -30,4 +32,15 @@ public class Focususer {
     public void setUserid(Integer userid) {
         this.userid = userid;
     }
+
+	public Focususer() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Focususer [id=" + id + ", name=" + name + ", user=" + user.getName() + "]";
+	}
+    
+    
 }

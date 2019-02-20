@@ -5,8 +5,10 @@ public class Collector {
 
     private String name;
 
-    private Integer postid;
+    private Integer userid;
 
+    private User user;
+    
     public Integer getId() {
         return id;
     }
@@ -23,11 +25,21 @@ public class Collector {
         this.name = name == null ? null : name.trim();
     }
 
-    public Integer getPostid() {
-        return postid;
+    public Integer getUserid() {
+        return userid;
     }
 
-    public void setPostid(Integer postid) {
-        this.postid = postid;
+    public void setUserid(Integer userid) {
+        this.userid = userid;
     }
+
+	public Collector() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Collector [id=" + id + ", name=" + name + ", user=" + user.getName() + "]";
+	}
+        
 }

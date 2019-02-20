@@ -3,12 +3,13 @@ package com.demo.domain.po;
 public class Visit {
     private Integer id;
 
-    private Integer pv;
+	private Integer pv;
 
     private Integer comment;
 
     private Integer like;
 
+    private Post post;
     public Integer getId() {
         return id;
     }
@@ -40,4 +41,9 @@ public class Visit {
     public void setLike(Integer like) {
         this.like = like;
     }
+    
+    @Override
+   	public String toString() {
+   		return "Visit [id=" + id + ", pv=" + pv + ", comment=" + comment + ", like=" + like + ", post=" + post.getTitle() + "]";
+   	}
 }

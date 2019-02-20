@@ -21,6 +21,8 @@ public class Integral {
 
     private Integer leagueid;
 
+    private League league;
+    
     public Integer getId() {
         return id;
     }
@@ -100,4 +102,17 @@ public class Integral {
     public void setLeagueid(Integer leagueid) {
         this.leagueid = leagueid;
     }
+
+	public Integral() {
+		super();
+	}
+
+	@Override
+	public String toString() {
+		return "Integral [id=" + id + ", name=" + name + ", session=" + session + ", win=" + win + ", equal=" + equal
+				+ ", lose=" + lose + ", goal=" + goal + ", fumble=" + fumble + ", score=" + score + ", "
+				+ "league=" + league.getName() + "]";
+	}
+    
+    
 }
