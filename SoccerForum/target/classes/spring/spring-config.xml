@@ -38,13 +38,14 @@
        			
        			
        			
-	<!-- 声明含有注解的Java类(Controller, Dao, Biz,Impl)的位置，并进行扫描注册 -->
-	<context:component-scan
-		base-package="com.test.SoccerForum.web.controller" />
-	<!-- 注册HandlerMapper、HandlerAdapter映射类，声明基于注解的映射描述。 -->
-	<mvc:annotation-driven />
-	<!-- 声明对静态资源、动态资源的分开处理 -->
-	<mvc:default-servlet-handler />
+		<!-- 声明含有注解的Java类(Controller, Dao, BizImpl)的位置，并进行扫描注册 -->
+		<context:component-scan base-package="com.test.SoccerForum.*"/>
+
+		<!-- 注册HandlerMapper、HandlerAdapter映射类，声明基于注解的映射描述。 -->
+		<mvc:annotation-driven/>
+		
+		<!-- 声明对静态资源、动态资源的分开处理 -->
+		<mvc:default-servlet-handler/>
 	
 	
 	
@@ -74,7 +75,7 @@
 	</bean>
 	<!-- dao 扫描注入 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
-		p:basePackage="com.test.SoccerForum.dao" />
+		p:basePackage="com.test.SoccerForum.dao" /> 
 	<!-- 声明视图解析器，完成逻辑视图名和物理视图资源的绑定 -->
 	<bean
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
