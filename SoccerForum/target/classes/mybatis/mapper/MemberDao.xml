@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.test.SoccerForum.dao.MemberDao">
 <select id="getTeamById" parameterType="int" resultType="Team">
 	select *
 		from Teams
 		where id = #{teamId}
 </select>
-<resultMap type="Member" id="getMemberById">
+<resultMap type="Member" id="getMemberById" autoMapping="true">
 	<id column="id" property="id"/>
 	<association property="team" column="teamId" select="getTeamById"/>
 </resultMap>

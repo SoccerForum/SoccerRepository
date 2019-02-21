@@ -4,3 +4,11 @@
 问题：
 1.mybatis-generator自动生成的.xml文件中并没有采用表连接的查询方式，而且看上去有些复杂，是采用然后在加上一些方法，
 还是全部都由自己来写实用一些呢
+2019/2/21
+问题：
+1.找不到.xml的位置，不在同一个文件下，可以通过classpath*:或/加文件路径
+文件路径前不加/默认在同一个文件夹下，加上/表示在根目录下的文件
+2.org.springframework.test.context.transaction.
+添加jdbc和tx依赖
+3.org.springframework.jdbc.CannotGetJdbcConnectionException：failed to obtain jdbc connection
+在pom.xml中加入5.x版本的MySQL connector依赖
