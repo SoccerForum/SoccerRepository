@@ -1,6 +1,8 @@
 package com.test.SoccerForum.domain.po;
 
-public class Collector {
+import java.io.Serializable;
+
+public class Collector implements Serializable{
     private Integer id;
 
     private String name;

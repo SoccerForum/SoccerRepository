@@ -1,6 +1,8 @@
 package com.test.SoccerForum.domain.po;
 
-public class Integral {
+import java.io.Serializable;
+
+public class Integral implements Serializable{
     private Integer id;
 
     private String name;

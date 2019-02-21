@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.SoccerForum.dao.PostDao">
+<select id="getVisitById" parameterType="int" resultType="Visit">
+	select *
+		from visits
+		where id = #{visitId}
+</select>
+<resultMap type="Post" id="getPostById" autoMapping="true">
+	<id column="id" property="id"/>
+	<association property="visit" column="visitId" select="getVisitById"/>
+</resultMap>
+<select id="findById" parameterType="int" resultMap="getPostById">
+	select * 
+	from posts
+		where id = #{id}
+</select>
+
+
+<select id="findAll" resultMap="getPostById">
+	select *
+		from posts
+</select>
+
+</mapper>

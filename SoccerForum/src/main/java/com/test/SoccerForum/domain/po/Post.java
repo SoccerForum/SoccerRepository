@@ -1,8 +1,10 @@
 package com.test.SoccerForum.domain.po;
 
+import java.io.Serializable;
+
 import org.omg.CORBA.UserException;
 
-public class Post {
+public class Post implements Serializable{
 
 	private Integer id;
 

@@ -10,9 +10,13 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.test.SoccerForum.dao.MemberDao;
+import com.test.SoccerForum.dao.PostDao;
 import com.test.SoccerForum.dao.TeamDao;
+import com.test.SoccerForum.dao.VisitDao;
 import com.test.SoccerForum.domain.po.Member;
+import com.test.SoccerForum.domain.po.Post;
 import com.test.SoccerForum.domain.po.Team;
+import com.test.SoccerForum.domain.po.Visit;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="/spring/spring-config.xml")
@@ -22,10 +26,16 @@ public class TestDao {
 	TeamDao teamDao;
 	@Autowired
 	MemberDao memberDao;
+	@Autowired
+	PostDao postDao;
+	@Autowired
+	VisitDao visitDao;
 	@Test
 	public void main(){
-		Member member = memberDao.findById(1);
-		System.out.println(member);
+		Member member2 = memberDao.findById(2);
+		System.out.println(member2);
+		Visit visit = visitDao.findById(2);
+		System.out.println(visit);
 	}
 	
 }

@@ -17,4 +17,16 @@
 	from members
 		where id = #{id}
 </select>
+
+
+<select id="findAll" resultMap="getMemberById">
+	select *
+		from members
+</select>
+
+<select id="findByName" parameterType="String" resultMap="getMemberById">
+	select *
+		from members
+			where name = #{name}
+</select>
 </mapper>

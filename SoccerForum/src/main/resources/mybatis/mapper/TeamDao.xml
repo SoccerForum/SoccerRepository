@@ -8,13 +8,17 @@
 		from members
 		where teamId = #{id}
 </select>
-<resultMap type="Team" id="getTeamById">
+<resultMap type="Team" id="getTeamById" autoMapping="true">
 	<id column="id" property="id"/>
-	<collection property="member" ofType="Member" column="id" select="getMemberById"/>
+	<collection property="members" ofType="Member" column="id" select="getMemberById"/>
 </resultMap>
 <select id="findById" parameterType="int" resultMap="getTeamById">
 	select * 
 	from teams
 		where id = #{id}
+</select>
+<select id="findAll" resultType="Team">
+	select *
+		from teams
 </select>
 </mapper>

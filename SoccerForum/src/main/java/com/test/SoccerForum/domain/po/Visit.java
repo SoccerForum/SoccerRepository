@@ -1,6 +1,8 @@
 package com.test.SoccerForum.domain.po;
 
-public class Visit {
+import java.io.Serializable;
+
+public class Visit implements Serializable{
     private Integer id;
 
 	private Integer pv;

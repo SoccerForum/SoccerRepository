@@ -1,9 +1,10 @@
 package com.test.SoccerForum.domain.po;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
-public class League {
+public class League implements Serializable{
     private Integer id;
 
     private String name;

@@ -1,6 +1,8 @@
 package com.test.SoccerForum.domain.po;
 
-public class Focususer {
+import java.io.Serializable;
+
+public class Focususer implements Serializable{
     private Integer id;
 
     private String name;
