@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.SoccerForum.dao.LeagueDao">
+<resultMap type="League" id = "getLeagueByRef" autoMapping="true">
+	<id column = "id" property = "id"></id>
+	<collection property="posts" ofType = "Post" autoMapping = "true">
+		<id column = "pid" property = "id"></id>
+	</collection>
+	<collection property="teams" ofType = "Team" autoMapping = "true">
+		<id column = "tid" property = "id"></id>
+		<result column = "tname" property = "name"></result>
+		<result column = "tleagueId" property = "leagueid"></result>
+	</collection>
+	<collection property="integrals" ofType = "Integral" autoMapping = "true">
+		<id  column = "iid" property = "id"></id>
+		<result column = "iname" property = "name"></result>
+		<result column = "ileagueId" property = "leagueid"></result>
+	</collection>
+</resultMap>
+<select id = "findById" parameterType = "int" resultMap = "getLeagueByRef">
+	SELECT *,posts.id pid,teams.id tid,teams.name tname,teams.leagueId tleagueId,integrals.id iid,integrals.`name` iname,integrals.leagueId ileagueId
+	from leagues
+		LEFT JOIN posts
+			on posts.leagueId = leagues.id
+				LEFT JOIN teams
+					on teams.leagueId = leagues.id
+						LEFT JOIN integrals
+							on integrals.leagueId = leagues.id
+								where leagues.id = #{id}
+</select>
+<select id = "findAll" parameterType = "int" resultMap = "getLeagueByRef">
+	SELECT *,posts.id pid,teams.id tid,teams.name tname,teams.leagueId tleagueId,integrals.id iid,integrals.`name` iname,integrals.leagueId ileagueId
+	from leagues
+		LEFT JOIN posts
+			on posts.leagueId = leagues.id
+				LEFT JOIN teams
+					on teams.leagueId = leagues.id
+						LEFT JOIN integrals
+							on integrals.leagueId = leagues.id
+</select>
+</mapper>

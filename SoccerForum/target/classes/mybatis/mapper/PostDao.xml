@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.test.SoccerForum.dao.PostDao">
+<!-- 
 <select id="getVisitById" parameterType="int" resultType="Visit">
 	select *
 		from visits
@@ -23,5 +24,41 @@
 	select *
 		from posts
 </select>
-
+-->
+<resultMap type="Post" id="getPostByRef" autoMapping="true">
+	<id column = "id" property = "id"></id>
+	<association property="user" javaType = "User" autoMapping = "true">
+		<id column = "uid" property = "id"></id>
+		<result column = "upv" property = "pv"/>
+	</association>
+	<association property="league" javaType = "League" autoMapping = "true">
+		<id column = "lid" property = "id"></id>
+		<result column = "lname" property = "name"/>
+	</association>
+	<association property="visit" javaType = "Visit" autoMapping = "true">
+		<id column = "vid" property = "id"></id>
+	</association>
+</resultMap>
+<select id="findById" parameterType="int" resultMap="getPostByRef">
+	SELECT *,visits.id vid,users.id uid,users.pv upv,leagues.id lid,leagues.name lname
+	from posts
+		INNER JOIN visits
+			on visits.id = posts.visitId
+				INNER JOIN users
+					on users.id = posts.userId
+						INNER JOIN leagues
+							on leagues.id = posts.leagueId
+								where posts.id = #{id}
+</select> 
+<select id="findAll" resultMap="getPostByRef">
+	SELECT *,visits.id vid,users.id uid,users.pv upv,leagues.id lid,leagues.name lname
+	from posts
+		INNER JOIN visits
+			on visits.id = posts.visitId
+				INNER JOIN users
+					on users.id = posts.userId
+						INNER JOIN leagues
+							on leagues.id = posts.leagueId
+								where posts.id = #{id}
+</select> 
 </mapper>

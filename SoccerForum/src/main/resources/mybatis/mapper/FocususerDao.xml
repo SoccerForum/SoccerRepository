@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.SoccerForum.dao.FocususerDao">
+<resultMap type="Focususer" id="getFocususerByRef" autoMapping = "true">
+	<id column = "id" property = "id"></id>
+	<association property="user" javaType = "User" autoMapping ="true">
+		<id  column = "uid" property = "id"></id>
+		<result column = "uname" property = "name"></result> 
+	</association>
+</resultMap>
+<select id = "findById" parameterType="int" resultMap = "getFocususerByRef">
+	select *,users.id uid,users.name uname
+	from focususers
+		INNER JOIN users
+			on users.id = focususers.userId
+				where focususers.id = #{id}
+</select>
+<select id = "findAll" parameterType="int" resultMap = "getFocususerByRef">
+	select *,users.id uid,users.name uname
+	from focususers
+		INNER JOIN users
+			on users.id = focususers.userId
+</select>
+</mapper>

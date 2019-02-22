@@ -26,15 +26,30 @@
   <!-- 表连接查询的方式 -->
  <resultMap type="Team" id="getTeamRef" autoMapping="true">
  	<id column = "id" property="id"/>
+ 	<association property="league" javaType = "League" autoMapping = "true">
+ 		<id column = "lid" property = "id"></id>
+ 		<result column = "lname" property = "name"></result>
+ 	</association>
  	<collection property="members" ofType="Member">
  		<id column = "mid" property = "id"/>
+ 		<result column = "mname" property = "name"></result>
  	</collection>
  </resultMap>
  <select id="findById" parameterType="int" resultMap="getTeamRef">
-	select *,members.id mid
+	select *,leagues.id lid,leagues.name lname,members.id mid,members.`name` mname
 		from teams
-		INNER JOIN members
-		on  members.teamId = teams.id
-		where teams.id = #{id}
+		INNER JOIN leagues
+			on leagues.id = teams.leagueId
+				INNER JOIN members
+					on  members.teamId = teams.id
+						where teams.id = #{id}
+</select>
+<select id="findAll" resultMap="getTeamRef">
+	select *,leagues.id lid,leagues.name lname,members.id mid,members.`name` mname
+		from teams
+		INNER JOIN leagues
+			on leagues.id = teams.leagueId
+				INNER JOIN members
+					on  members.teamId = teams.id
 </select>
 </mapper>
