@@ -59,6 +59,14 @@ public class Member implements Serializable{
 		super();
 	}
 
+	public Team getTeam() {
+		return team;
+	}
+
+	public void setTeam(Team team) {
+		this.team = team;
+	}
+
 	@Override
 	public String toString() {
 		return "Member [id=" + id + ", name=" + name + ", role=" + role + ", num=" + num + ", "

@@ -12,3 +12,6 @@
 添加jdbc和tx依赖
 3.org.springframework.jdbc.CannotGetJdbcConnectionException：failed to obtain jdbc connection
 在pom.xml中加入5.x版本的MySQL connector依赖
+2019/2/22
+1.mybatis两次查询时，发现findbyid可以正常获取数据库信息，而findbyName返回值却为空，如果是两种查询方式都为空的话，最有可能是字段类型不匹配，但是findbyid可以正常显示，说明是name的值没有传到xml文件，这时候去查看dbconfig.properties文件，会发现在url缺少了useUnicode=true&characterEncoding=utf-8，就会导致汉字不能正常的传递。
+2.使用表连接查询的时候，在字段对应的时候，如果名字一致，可以在resultMap和association或collection中加入autoMapping = "true",如果两个表中都有id，name属性，要通过别名的方法进行区分，然后在id column = "tid" property = "id" result column = "tname" property = "name" 如果不加automaping，就不能获取到对应的值，显示为空，如果同名的属性不加以区分，会默认获取第一个属性的值。

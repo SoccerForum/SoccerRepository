@@ -32,10 +32,8 @@ public class TestDao {
 	VisitDao visitDao;
 	@Test
 	public void main(){
-		Member member2 = memberDao.findById(2);
+		List<Member> member2 = memberDao.findAll();
 		System.out.println(member2);
-		Visit visit = visitDao.findById(2);
-		System.out.println(visit);
 	}
 	
 }
