@@ -40,4 +40,7 @@
 						LEFT JOIN collectors 
 							on collectors.userId = users.id
 </select>
+<insert id = "insert" parameterType="User">
+	insert into users(name,pwd) values(#{name},#{pwd})
+</insert>
 </mapper>
