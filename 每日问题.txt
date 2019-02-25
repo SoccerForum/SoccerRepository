@@ -15,3 +15,7 @@
 2019/2/22
 1.mybatis两次查询时，发现findbyid可以正常获取数据库信息，而findbyName返回值却为空，如果是两种查询方式都为空的话，最有可能是字段类型不匹配，但是findbyid可以正常显示，说明是name的值没有传到xml文件，这时候去查看dbconfig.properties文件，会发现在url缺少了useUnicode=true&characterEncoding=utf-8，就会导致汉字不能正常的传递。
 2.使用表连接查询的时候，在字段对应的时候，如果名字一致，可以在resultMap和association或collection中加入autoMapping = "true",如果两个表中都有id，name属性，要通过别名的方法进行区分，然后在id column = "tid" property = "id" result column = "tname" property = "name" 如果不加automaping，就不能获取到对应的值，显示为空，如果同名的属性不加以区分，会默认获取第一个属性的值。
+2019/2/25
+1.Could not resolve resource location pattern [mybatis/mapper/*.xml]: ServletContext resource [/mybatis/mapper/] cannot be resolved to URL because it does not exist
+在页面跳转的时候出现404的错误，eclipse给出的错误信息如上，意思是解析不了mybatis/mapper.xml文件，造成的原因是，我的路径写的是mybatis/mapper/*.xml,但是mybatis并不是在根目录下，所以在配置文件中<property name="mapperLocations" value="mybatis/mapper/*.xml" />这一行需要给成value=”classpath*:mybatis/mapper/*.xml表示扫描当前文件夹下所有的mybatis文件夹中xml文件“，就成功的解决了路径的问题。（困扰了自己三天的问题,应该好好反思）
+学到的纠错方法：首先明白运行的顺序，先从web.xml拦截请求，然后在到config.xml扫描文件，进行视图解析，然后在跳转到指定的页面，先去查看controller中的方法能否得到应有的结果，如果没有问题，就去查看配置文件中的路径，挨个调试，知道解决问题。

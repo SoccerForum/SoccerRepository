@@ -28,6 +28,7 @@ import com.test.SoccerForum.domain.po.Post;
 import com.test.SoccerForum.domain.po.Team;
 import com.test.SoccerForum.domain.po.User;
 import com.test.SoccerForum.domain.po.Visit;
+import com.test.SoccerForum.service.MemberService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations="/spring/spring-config.xml")
@@ -51,6 +52,7 @@ public class TestDao {
 	UserDao userDao;
 	@Autowired
 	VisitDao visitDao;
+	
 	@Test
 	public void main(){
 		Collector collector = collectorDao.findById(1);

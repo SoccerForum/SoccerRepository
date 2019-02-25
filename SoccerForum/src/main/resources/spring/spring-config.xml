@@ -46,7 +46,14 @@
 		
 		<!-- 声明对静态资源、动态资源的分开处理 -->
 		<mvc:default-servlet-handler/>
-	
+		
+			<!-- 声明视图解析器，完成逻辑视图名和物理视图资源的绑定 -->
+		<bean
+			class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+			<!-- 绑定方式：将给出的视图逻辑（资源）名和下列给出的前缀和后缀绑定，申明物理视图资源名称 -->
+			<property name="prefix" value="/WEB-INF/page/" />
+			<property name="suffix" value=".jsp" />
+		</bean>
 	
 	
 	
@@ -71,18 +78,11 @@
 		<property name="dataSource" ref="dataSource" />
 		<property name="typeAliasesPackage"
 			value="com.test.SoccerForum.domain.po" />
-		<property name="mapperLocations" value="/mybatis/mapper/*.xml" />
+		<property name="mapperLocations" value="classpath*:mybatis/mapper/*.xml" />
 	</bean>
 	<!-- dao 扫描注入 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"
 		p:basePackage="com.test.SoccerForum.dao" /> 
-	<!-- 声明视图解析器，完成逻辑视图名和物理视图资源的绑定 -->
-	<bean
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<!-- 绑定方式：将给出的视图逻辑（资源）名和下列给出的前缀和后缀绑定，申明物理视图资源名称 -->
-		<property name="prefix" value="/WEB-INF/page/" />
-		<property name="suffix" value=".jsp" />
-	</bean>
 	<!-- <bean id = "memberDao" class = "org.mybatis.spring.mapper.MapperFactoryBean"> 
 		<property name="mapperInterface" value="com.test.SoccerForum.dao.MemberDao"/> <property 
 		name="sqlSessionFactory" ref="sqlSessionFactory"/> </bean> -->
