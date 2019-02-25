@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.test.SoccerForum.dao.PostDao;
 import com.test.SoccerForum.dao.UserDao;
 import com.test.SoccerForum.domain.po.Member;
+import com.test.SoccerForum.domain.po.Post;
 import com.test.SoccerForum.domain.po.User;
 import com.test.SoccerForum.service.MemberService;
 import com.test.SoccerForum.service.UserService;
@@ -17,20 +19,20 @@ import com.test.SoccerForum.service.UserService;
 @Controller
 public class TestController {
 	@Autowired
-	MemberService memberService;
-	@Autowired
 	UserService userService;
-	@RequestMapping("/test")
+	@Autowired
+	PostDao postDao;
+	@RequestMapping("/demo")
 	public String toTest(User user,Model model){
 		
-		List<Member> members = memberService.getAll();
 		
-		model.addAttribute("members",members);
-		
+		System.out.println(user.getName());
 		int res = userService.insertOne(user);
 		
 		System.out.println(res);
-		return "test";
+		
+		List<Post> posts = postDao.findAll();
+		return "demo";
 	}
 	@RequestMapping("/login")
 	public String toLogin(){

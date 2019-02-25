@@ -4,8 +4,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="renderer" content="webkit|ie-stand|ie-comp" />
 <title>
 
    
@@ -97,7 +95,7 @@
             	
             	
             		<!-- 登录名、邮箱、手机+密码登录 -->
-		            <form class="common-form login-form" id="J_loginForm" autocomplete="off" action = "test" method="post">
+		            <form class="common-form login-form" id="J_loginForm" autocomplete="off" action = "demo" method="post">
 		                <ul>
 		                    <li>
 		                        <div class="ipt-wrap">

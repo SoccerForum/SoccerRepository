@@ -75,7 +75,7 @@ public class Post implements Serializable{
 	public Post() {
 		super();
 	}
-
+	
 	@Override
 	public String toString() {
 		return "Post [id=" + id + ", title=" + title + ", context=" + context + ", visit=" + visit.getPv() + " " + visit.getComment() + " " + visit.getLike() + ", user=" + user.getName() + ", league=" + league.getName() + "]";
