@@ -65,9 +65,9 @@ public class TestDao {
 		System.out.println(league);
 		Member member = memberDao.findById(1);
 		System.out.println(member);
-		Post post = postDao.findById(1);
+		String post = postDao.findTitleById(44).getTitle();
 		System.out.println(post);
-		Team team = teamDao.findById(1);
+		List<Team> team = teamDao.findAll();
 		System.out.println(team);
 		User user = userDao.findById(1);
 		System.out.println(user);

@@ -40,15 +40,15 @@
 	</association>
 </resultMap>
 <select id="findById" parameterType="int" resultMap="getPostByRef">
-	SELECT *,visits.id vid,users.id uid,users.pv upv,leagues.id lid,leagues.name lname
-	from posts
-		INNER JOIN visits
-			on visits.id = posts.visitId
-				INNER JOIN users
-					on users.id = posts.userId
-						INNER JOIN leagues
-							on leagues.id = posts.leagueId
-								where posts.id = #{id}
+		SELECT *,visits.id vid,users.id uid,users.pv upv,leagues.id lid,leagues.name lname
+		from posts
+			INNER JOIN visits
+				on visits.id = posts.visitId
+					INNER JOIN users
+						on users.id = posts.userId
+							INNER JOIN leagues
+								on leagues.id = posts.leagueId
+									where posts.id = #{id}
 </select> 
 <select id="findAll" resultMap="getPostByRef">
 	SELECT *,visits.id vid,users.id uid,users.pv upv,leagues.id lid,leagues.name lname
@@ -59,6 +59,10 @@
 					on users.id = posts.userId
 						INNER JOIN leagues
 							on leagues.id = posts.leagueId
-								where posts.id = #{id}
 </select> 
+<select id="findTitleById" parameterType="int" resultType="Post">
+	select *
+		from posts
+			where id = #{id}
+</select>
 </mapper>

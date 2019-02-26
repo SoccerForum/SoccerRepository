@@ -7,6 +7,6 @@
 <title>帖子详情页</title>
 </head>
 <body>
-
+	
 </body>
 </html>

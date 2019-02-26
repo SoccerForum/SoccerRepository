@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,7 +27,7 @@
             </div>
             <!--top-right-->
             <div class="top-right">
-                <a class="a-float-left" href="#">商品分类</a>
+                <a class="a-float-left" href="#">我的首页</a>
                 <span class="vertical-line">|</span>
                 <a class="a-float-left" href="#">联系客户</a>
                 <div data-toggle="arrowdown" id="arrow7" class="user-name">
@@ -118,26 +119,27 @@
     <div class="content-top">
         <!--sidebar-->
         <div class="sidebar">
-            <h3>商品服务分类</h3>
+            <h3>我关注的板块</h3>
             <!--sidebar-info-->
             <div class="sidebar-info">
                 <ul class="side-li">
-                    <li class="s_1"><h3>服装内衣<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_2"><h3>鞋包配饰<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_3"><h3>运动户外<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_4"><h3>珠宝手表<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_5"><h3>手机数码<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_6"><h3>家电办公<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_7"><h3>护肤彩妆<span class="fa fa-angle-right fa-loc"></span></h3>v</li>
-                    <li class="s_8"><h3>母婴用品<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_9"><h3>家纺居家<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_10"><h3>家具建材<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_11"><h3>美食特产<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_12"><h3>日用百货<span class="fa fa-angle-right fa-loc"></span></h3></li>
+                    <li class="s_1"><h3>足球话题区<span class="fa fa-angle-right fa-loc"></span></h3></li>
+                    <li class="s_2"><h3>足球场<span class="fa fa-angle-right fa-loc"></span></h3></li>
+                    <li class="s_3"><h3>英超专区<span class="fa fa-angle-right fa-loc"></span></h3></li>
+                    <li class="s_4"><h3>西甲专区<span class="fa fa-angle-right fa-loc"></span></h3></li>
+                    <li class="s_5"><h3>意甲专区<span class="fa fa-angle-right fa-loc"></span></h3></li>
+                    <li class="s_6"><h3>德意志城堡<span class="fa fa-angle-right fa-loc"></span></h3></li>
+                    <li class="s_7"><h3>法兰西足球<span class="fa fa-angle-right fa-loc"></span></h3></li>
+                    <li class="s_8"><h3>中国足球<span class="fa fa-angle-right fa-loc"></span></h3></li>
+                    <li class="s_9"><h3>皇马专区<span class="fa fa-angle-right fa-loc"></span></h3></li>
+                    <li class="s_10"><h3>巴萨专区<span class="fa fa-angle-right fa-loc"></span></h3></li>
+                    <li class="s_11"><h3>尤文专区<span class="fa fa-angle-right fa-loc"></span></h3></li>
+              		<!-- <li class="s_12"><h3>日用百货<span class="fa fa-angle-right fa-loc"></span></h3></li>
                     <li class="s_13"><h3>汽车摩托<span class="fa fa-angle-right fa-loc"></span></h3></li>
                     <li class="s_14"><h3>文化娱乐<span class="fa fa-angle-right fa-loc"></span></h3></li>
                     <li class="s_15"><h3>本地生活<span class="fa fa-angle-right fa-loc"></span></h3></li>
-                    <li class="s_16"><h3>虚拟服务<span class="fa fa-angle-right fa-loc"></span></h3></li>
+                    <li class="s_16"><h3>虚拟服务<span class="fa fa-angle-right fa-loc"></span></h3></li>     
+                	 -->
                 </ul>
                 <!--hidden-li-box-->
                 <ul class="hiden-box">
@@ -2835,17 +2837,15 @@
         <!--right-con-->
         <div class="right-con">
             <div class="nav">
-                <a href="#">天猫</a>
-                <a href="#">聚划算</a>
-                <a href="#">二手</a>
+                <a href="#">足球场</a>
+                <a href="#">足球话题</a>
+                <a href="#">英超专区</a>
         
-                <a href="#">拍卖</a>
-                <a href="#">一淘</a>
-                <a href="#">电器城</a>
-                <a href="#">Hitao粉妆</a>
-                <a href="#">旅行</a>
-                <a href="#">云手机</a>
-                <a href="#">特色中国</a>              
+                <a href="#">西甲专区</a>
+                <a href="#">意甲专区</a>
+                <a href="#">德意志城堡</a>
+                <a href="#">妖人银河系</a>
+                <a href="#">更多</a>             
             </div>
             <!--show-box-->
             <div class="show-box">
@@ -2854,9 +2854,10 @@
 
 		<div class="active clear listel contour-2"><ol class='list-none metlist'>
 			<div><font size="3" face="黑体" color="#AD0000"><b>&nbsp;&nbsp;主题市场</b></font></div>
-<li class='list top'><span class='time'>2012-07-17</span><a href='#' >如何选择网站关键词?</a></li>
-<li class='list '><span class='time'>2012-07-16</span><a href='#' >新手使用MetInfo建站步骤</a></li>
-<li class='list '><span class='time'>2012-07-16</span><a href='#' >企业网站应该多长时间备份一次？</a></li>
+			
+			<c:forEach var="title" items="${posts}">
+<li class='list '><span class='time'>2012-07-16</span><a href="content" >${title}</a></li> 
+				</c:forEach> 
 <br>
 	<div><font size="3" face="黑体" color="#AD0000"><b>&nbsp;&nbsp;主题市场</b></font></div>
 <li class='list '><span class='time'>2012-07-16</span><a href='#' >如何充分发挥MetInfo的SEO功能</a></li>
