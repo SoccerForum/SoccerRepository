@@ -39,8 +39,32 @@ public class Post implements Serializable{
     public void setUserid(Integer userid) {
         this.userid = userid;
     }
+    
+    public Visit getVisit() {
+		return visit;
+	}
 
-    public String getTitle() {
+	public void setVisit(Visit visit) {
+		this.visit = visit;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public League getLeague() {
+		return league;
+	}
+
+	public void setLeague(League league) {
+		this.league = league;
+	}
+
+	public String getTitle() {
         return title;
     }
 

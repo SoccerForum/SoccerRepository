@@ -10,6 +10,9 @@ import org.springframework.http.client.ClientHttpRequestInterceptor;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.test.SoccerForum.dao.CollectorDao;
 import com.test.SoccerForum.dao.FocususerDao;
 import com.test.SoccerForum.dao.IntegralDao;
@@ -65,7 +68,7 @@ public class TestDao {
 		System.out.println(league);
 		Member member = memberDao.findById(1);
 		System.out.println(member);
-		String post = postDao.findTitleById(44).getTitle();
+		Post post = postDao.findById(44);
 		System.out.println(post);
 		List<Team> team = teamDao.findAll();
 		System.out.println(team);
@@ -73,6 +76,16 @@ public class TestDao {
 		System.out.println(user);
 		Visit visit = visitDao.findById(1);
 		System.out.println(visit);
+//			JsonArray jarray = new JsonArray();
+//			JsonObject jobject = new JsonObject();
+//			jobject.addProperty("pid", post.getId());			
+//			jobject.addProperty("puserId", post.getUserid());
+//			jobject.addProperty("ptitle", post.getTitle());
+//			jobject.addProperty("pcontext",post.getContext());
+//			jobject.addProperty("pleagueId", post.getLeagueid());
+//			jobject.addProperty("pvisitId", post.getVisitid());
+//			jarray.add(jobject);
+//			System.out.println(jarray);
 	}
 	
 }

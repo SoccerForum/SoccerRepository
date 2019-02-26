@@ -3,10 +3,152 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>帖子详情页</title>
+<meta name="keywords" content="个人博客模板,博客模板,响应式" />
+<meta name="description" content="个人博客模板，神秘、俏皮。" />
+<link rel="stylesheet" type="text/css" href="css/base.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/index.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/media.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/layui.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
 </head>
 <body>
-	
+	<div class="ibody">
+
+  <article>
+      <div class="content whisper-content">
+    <div class="cont">
+      <div class="whisper-list">
+        <div class="item-box">
+          <div class="item">
+            <div class="whisper-title">
+              <div style="float:left"><span>${post.getTitle()}</span></div>
+            </div>
+            <div style="float:right"><font size="3"><span class="name">作者:${post.getUser().name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="data">2018/06/06</span></font></div>
+            <br><br><div><p class="text-cont">
+              一直听说牛油果吃起来像肥皂、肥肉，虽然很难吃，但是价格却很贵，我还是想尝试一下。今天公司新到了新西兰牛油果，这是新西兰牛油果是第一次在中国上市，个头比普通牛油果大了一倍，被誉为“超牛果”。好奇心驱使我尝了一颗，第一次吃牛油果没有见识，切开牛油果费了好大劲，切成了这样。
+            </p></div>
+            <div class="img-box">
+              <img src="${post.getContext()}">
+            </div>
+            <div class="op-list">
+              <p class="like"><i class="layui-icon layui-icon-user"></i><span>${post.getVisit().pv}</span></p>
+              <p class="like"><i class="layui-icon layui-icon-praise"></i><span>${post.getVisit().like}</span></p> 
+              <p class="edit"><i class="layui-icon layui-icon-reply-fill"></i><span>${post.getVisit().comment}</span></p>
+            </div>
+          </div>
+          <div class="review-version">
+              <div class="form">
+                <img src="images/header2.png">
+                <form class="layui-form" action="">
+                  <div class="layui-form-item layui-form-text">
+                    <div class="layui-input-block">
+                      <textarea name="desc" class="layui-textarea"></textarea>
+                    </div>
+                  </div>
+                  <div class="layui-form-item">
+                    <div class="layui-input-block" style="text-align: right;">
+                      <button class="layui-btn definite">确定</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="list-cont">
+                <div class="cont">
+                  <div class="img">
+                    <img src="images/header.png" alt="">
+                  </div>
+                  <div class="text">
+                    <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
+                    <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
+                  </div>
+                </div>
+                <div class="cont">
+                  <div class="img">
+                    <img src="images/header.png" alt="">
+                  </div>
+                  <div class="text">
+                    <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
+                    <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
+                  </div>
+                </div>
+                <div class="cont">
+                  <div class="img">
+                    <img src="images/header.png" alt="">
+                  </div>
+                  <div class="text">
+                    <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
+                    <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
+                  </div>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+      <div id="demo" style="text-align: center;"></div>
+    </div>
+  </div>
+  <script type="text/html" id="laytplCont">
+    <div class="cont">
+      <div class="img">
+        <img src="{{d.avatar}}" alt="">
+      </div>
+      <div class="text">
+        <p class="tit"><span class="name">{{d.name}}</span><span class="data">2018/06/06</span></p>
+        <p class="ct">{{d.cont}}</p>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/javascript" src="js/layui.js"></script>
+  <script type="text/javascript">
+   layui.config({
+      base: 'js/'
+    }).use(['element','laypage','form','menu'],function(){
+      element = layui.element,laypage = layui.laypage,form = layui.form,menu = layui.menu;
+
+      menu.init();
+      menu.off();
+      menu.submit()
+    })
+  </script>
+  </article>
+  <aside>
+  	<br><br>
+    <div class="tj_news">
+      <h2>
+        <p class="tj_t1">最新文章</p>
+      </h2>
+      <ul>
+        <li><a href="/">犯错了怎么办？</a></li>
+        <li><a href="/">两只蜗牛艰难又浪漫的一吻</a></li>
+        <li><a href="/">春暖花开-走走停停-发现美</a></li>
+        <li><a href="/">琰智国际-Nativ for Life官方网站</a></li>
+        <li><a href="/">个人博客模板（2014草根寻梦）</a></li>
+        <li><a href="/">简单手工纸玫瑰</a></li>
+        <li><a href="/">响应式个人博客模板（蓝色清新）</a></li>
+        <li><a href="/">蓝色政府（卫生计划生育局）网站</a></li>
+      </ul>
+      <h2>
+        <p class="tj_t2">推荐文章</p>
+      </h2>
+      <ul>
+        <li><a href="/">犯错了怎么办？</a></li>
+        <li><a href="/">两只蜗牛艰难又浪漫的一吻</a></li>
+        <li><a href="/">春暖花开-走走停停-发现美</a></li>
+        <li><a href="/">琰智国际-Nativ for Life官方网站</a></li>
+        <li><a href="/">个人博客模板（2014草根寻梦）</a></li>
+        <li><a href="/">简单手工纸玫瑰</a></li>
+        <li><a href="/">响应式个人博客模板（蓝色清新）</a></li>
+        <li><a href="/">蓝色政府（卫生计划生育局）网站</a></li>
+      </ul>
+    </div>
+ </aside>
+  <div class="clear"></div>
+  <!-- 清除浮动 --> 
+</div>
 </body>
 </html>

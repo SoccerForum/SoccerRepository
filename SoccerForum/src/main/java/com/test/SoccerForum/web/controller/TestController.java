@@ -37,10 +37,10 @@ public class TestController {
 	@RequestMapping("/demo")
 	public String toTest(User user,Model model){
 		
-		System.out.println(user.getName());
-		int res = userService.insertOne(user);
+		//System.out.println(user.getName());
+		userService.insertOne(user);
 		List<String> list = new ArrayList<String>();
-		System.out.println(res);
+		//System.out.println(res);
 		for(int i = 35;i <= 47;i++){
 			String post = postDao.findTitleById(i).getTitle();
 			list.add(post);
@@ -56,7 +56,12 @@ public class TestController {
 		return "login";
 	}
 	@RequestMapping("/content")
-	public String toContent(){
+	public String toContent(Model model){
+		Post post = postDao.findById(35);
+		System.out.println(post);
+//		Gson gson = new Gson();
+//		String jsString = gson.toJson(post);
+		model.addAttribute("post",post);
 		return "content";
 	}
 }

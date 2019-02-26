@@ -27,9 +27,9 @@
             </div>
             <!--top-right-->
             <div class="top-right">
-                <a class="a-float-left" href="#">我的首页</a>
+                <a class="a-float-left" href="#">你好,${user.name}</a>
                 <span class="vertical-line">|</span>
-                <a class="a-float-left" href="#">联系客户</a>
+                <a class="a-float-left" href="#"></a>
                 <div data-toggle="arrowdown" id="arrow7" class="user-name">
                     <i class="fa fa-list-ul fa-orange"></i>
                     <a href="#">网站导航</a>

@@ -31,3 +31,11 @@
 解决办法：a.利用json数组的形式封装，然后在前端用js/ajax解析json数组
 b.利用list，将数据add到list中，然后用model.attribute传到前端，然后用foreach的方法，进行迭代输出
 注意：foreach需要导入jstl,standard的jar包，前面还要加入<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+需要解决的技术点：
+1.点击帖子的title，转到帖子详情页面，并显示posts.title,context,浏览量的信息
+
+2.怎么将posts转化成一个可以任意取属性的对象，并在适当的位置显示相应的值
+解决方法：用el表达式获取post中的get方法，对于关联属性，通过get实体类再取属性
+3.怎么实现将数据库中存取的图片的绝对路径转化为图片显示在jsp页面上
+将图片的路径放到数据库中，用el表达式直接在jsp页面解析即可得到图片
+4.如果是帖子中既有文字又有图片，该怎么处理才能实现数据的正常显示
