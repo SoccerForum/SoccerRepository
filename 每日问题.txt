@@ -33,6 +33,7 @@ b.ÀûÓÃlist£¬½«Êı¾İaddµ½listÖĞ£¬È»ºóÓÃmodel.attribute´«µ½Ç°¶Ë£¬È»ºóÓÃforeachµÄ·½·
 ×¢Òâ£ºforeachĞèÒªµ¼Èëjstl,standardµÄjar°ü£¬Ç°Ãæ»¹Òª¼ÓÈë<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 ĞèÒª½â¾öµÄ¼¼Êõµã£º
 1.µã»÷Ìû×ÓµÄtitle£¬×ªµ½Ìû×ÓÏêÇéÒ³Ãæ£¬²¢ÏÔÊ¾posts.title,context,ä¯ÀÀÁ¿µÄĞÅÏ¢
+ÔõÃ´»ñÈ¡jspµÄtitle
 
 2.ÔõÃ´½«posts×ª»¯³ÉÒ»¸ö¿ÉÒÔÈÎÒâÈ¡ÊôĞÔµÄ¶ÔÏó£¬²¢ÔÚÊÊµ±µÄÎ»ÖÃÏÔÊ¾ÏàÓ¦µÄÖµ
 ½â¾ö·½·¨£ºÓÃel±í´ïÊ½»ñÈ¡postÖĞµÄget·½·¨£¬¶ÔÓÚ¹ØÁªÊôĞÔ£¬Í¨¹ıgetÊµÌåÀàÔÙÈ¡ÊôĞÔ

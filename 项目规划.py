@@ -70,7 +70,7 @@
 		6.浏览量表Visits（id,pv(访问量),comment(评论量),like(点赞数)）
 			-->需要根据访问量进行排序，选出前几个进行展示
 		7.收藏表Collectors（id,name,userId）
-		8.关注表FocusUsers(id,name,userId)
+		8.关注表Focususers(id,name,userId)
 		9.积分表Integrals(id,name,session(场次),win,equal,lose,goal(进球),fumble(失球)，score积分,leagueId)
 		外键：
 		fk_Posts_Visits(visitId)
@@ -102,9 +102,36 @@
 		Post.java(id,title,context,leagueId,visitId,userId)
 		Visit.java(id,pv,comment,like)
 		Collector.java(id,name,userId)
-		FocusUser.java(id,name,userId)
+		Focususer.java(id,name,userId)
 		Integral.java(id,name,session,win,equal,lose,goal,fumble,score,leagueId)
 	与实体类对应的Dao、xml文件
+		dao:
+			UserDao
+			LeagueDao
+			TeamDao
+			MemberDao
+			PostDao
+			VisitDao
+			CollectorDao
+			FocususerDao
+			IntegralDao
+
+		spring/mapper:
+			UserDao.xml
+			LeagueDao.xml
+			TeamDao.xml
+			MemberDao.xml
+			PostDao.xml
+			VisitDao.xml
+			CollectorDao.xml
+			FocususerDao.xml
+			IntegralDao.xml
+	Service:
+		MemberService
+		UserService
+	Controller:
+		web.controller
+			TestController
 4.代码的实现
 	可能遇到的问题和难点：
 	1.首先在github上创建一个项目，实现各个成员分工的提交
@@ -168,6 +195,7 @@
 	5.收藏后可以在个人界面查看
 	6.赞赏功能，实现余额的变化，以及充值的功能
 	7.点击球队名称要显示球队的成员信息
+
 
 
 
