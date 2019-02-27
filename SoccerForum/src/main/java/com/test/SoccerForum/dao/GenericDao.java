@@ -10,6 +10,9 @@ public interface GenericDao<Entity extends Serializable, ID extends Object> {
 	List<Entity> findAll();
 	List<Entity> findByName(String name);
 	Entity findTitleById(ID id);
+	Entity findByTitle(String title);
+	
+	int updateById(ID id);
 	
 	int insert(Entity entity);
 	int update(Entity entity);

@@ -8,7 +8,7 @@
     <title>taobao jquery js lephy</title>
     <link rel="stylesheet" href="css/reset.css"/>
     <link rel="stylesheet" href="css/font-awesome.min.css"/>
-    <link rel="stylesheet" href="css/style.css"/>
+    <link rel="stylesheet" href="css/demostyle.css"/>
     <meta name="description" content="网站描述，一般显示在搜索引擎搜索结果中的描述文字，用于介绍网站，吸引浏览者点击。" />
     <meta name="keywords" content="网站关键词" />
     <meta name="generator" content="MetInfo 5.1.7" />
@@ -29,7 +29,8 @@
             <div class="top-right">
                 <a class="a-float-left" href="#">你好,${user.name}</a>
                 <span class="vertical-line">|</span>
-                <a class="a-float-left" href="#"></a>
+                <a class="a-float-left" href="user">我的首页</a>
+                <span class="vertical-line">|</span>
                 <div data-toggle="arrowdown" id="arrow7" class="user-name">
                     <i class="fa fa-list-ul fa-orange"></i>
                     <a href="#">网站导航</a>
@@ -112,7 +113,7 @@
         </div>
         <!--scroll-top-->      
     </div>
-    <center><img src="images/ad.jpg"></center>
+    <center><img src="images/hengfu.jpg"></center>
     <!--top-main-->
     <div class="top-main">
     <!--content-top-->
@@ -2856,7 +2857,7 @@
 			<div><font size="3" face="黑体" color="#AD0000"><b>&nbsp;&nbsp;主题市场</b></font></div>
 			
 			<c:forEach var="title" items="${posts}">
-<li class='list '><span class='time'>2012-07-16</span><a href="content" >${title}</a></li> 
+<li class='list '><span class='time'>2012-07-16</span><a href="content?title=${title}">${title}</a></li> 
 				</c:forEach> 
 <br>
 	<div><font size="3" face="黑体" color="#AD0000"><b>&nbsp;&nbsp;主题市场</b></font></div>
