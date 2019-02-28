@@ -7,6 +7,7 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.SynchronousQueue;
 
 import javax.management.modelmbean.ModelMBeanAttributeInfo;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.ibatis.annotations.Param;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.validator.PublicClassValidator;
+import org.omg.PortableServer.IdAssignmentPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.metadata.PostgresCallMetaDataProvider;
 import org.springframework.stereotype.Controller;
@@ -47,6 +49,10 @@ public class TestController {
 	PostDao postDao;
 	@Autowired
 	VisitDao visitDao;
+	@RequestMapping("/login")
+	public String toLogin(){
+		return "login";
+	}
 	@RequestMapping("/demo")
 	public String toTest(User user,Model model){
 
@@ -61,23 +67,31 @@ public class TestController {
 //		System.out.println(posts);
 //		System.out.println(list);
 		model.addAttribute("posts",list);
-		return "demo";
+ 		return "demo";
 	}
-	@RequestMapping("/login")
-	public String toLogin(){
-		return "login";
+	@RequestMapping("/category")
+	public String toCategory(Model model){
+		int id = 1;
+		List<Post> posts = postDao.findByLeagueId(id);
+		model.addAttribute("leaguepost",posts);
+		return null;
 	}
 	@RequestMapping("/content")
 	public String toContent(User user,String title,Model model){
 		System.out.println(title);
 		Post post = postDao.findByTitle(title);
-		System.out.println(post);
 		visitDao.updateById(post.getVisitid());
 //		Gson gson = new Gson();
 //		String jsString = gson.toJson(post);
 		model.addAttribute("post",post);
 		return "content";
 	}
+//	@RequestMapping("/like")
+//	public String toLike(String title){
+//		Post post = postDao.findByTitle(title);
+//		visitDao.updateLikeById(post.getVisitid());
+//		return null;
+//	}
 	@RequestMapping("/user")
 	public String toUser(){
 		return "user";
@@ -85,10 +99,5 @@ public class TestController {
 	@RequestMapping("/about")
 	public String toAbout(){
 		return "about";
-	}
-	public int likenum(HttpServletRequest request,HttpServletResponse response){
-		String name = request.getParameter("name");
-		int res = visitDao.updateById(postDao.findByTitle(name).getId());
-		return res;		 
 	}
 }

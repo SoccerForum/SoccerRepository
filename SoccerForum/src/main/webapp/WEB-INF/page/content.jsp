@@ -115,11 +115,13 @@
       menu.submit()
     })
   </script>
-  <script type="text/javascript">
-  	$("likenum").click(function(){
+  <!--  
+  <script type="text/javascript" src="js/jquery.min.js">
+  	$("#likenum").click(function(){
+  		alert("1");
   		$.ajax({
-			type:"post",
-			url:,
+			data:"${post.getTitle()}",
+			url:"like",
 			data:{"name":post.getTitle()}, 
 			dataType:'string',
 			success:function(data) {
@@ -128,6 +130,7 @@
 		});
   	});
   </script>
+  -->
   </article>
   <aside>
   	<br><br>

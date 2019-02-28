@@ -76,6 +76,7 @@ public class TestDao {
 		System.out.println(user);
 		Visit visit = visitDao.findById(1);
 		System.out.println(visit);
+		System.out.println(postDao.findByLeagueId(2));
 //			JsonArray jarray = new JsonArray();
 //			JsonObject jobject = new JsonObject();
 //			jobject.addProperty("pid", post.getId());			

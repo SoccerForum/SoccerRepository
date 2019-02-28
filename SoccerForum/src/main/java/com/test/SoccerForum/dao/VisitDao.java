@@ -4,4 +4,5 @@ import com.test.SoccerForum.domain.po.Visit;
 
 public interface VisitDao extends GenericDao<Visit, Integer>{
 
+
 }

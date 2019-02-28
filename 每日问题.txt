@@ -41,4 +41,10 @@ b.ÀûÓÃlist£¬½«Êý¾Ýaddµ½listÖÐ£¬È»ºóÓÃmodel.attribute´«µ½Ç°¶Ë£¬È»ºóÓÃforeachµÄ·½·
 ½â¾ö·½·¨£ºÓÃel±í´ïÊ½»ñÈ¡postÖÐµÄget·½·¨£¬¶ÔÓÚ¹ØÁªÊôÐÔ£¬Í¨¹ýgetÊµÌåÀàÔÙÈ¡ÊôÐÔ
 3.ÔõÃ´ÊµÏÖ½«Êý¾Ý¿âÖÐ´æÈ¡µÄÍ¼Æ¬µÄ¾ø¶ÔÂ·¾¶×ª»¯ÎªÍ¼Æ¬ÏÔÊ¾ÔÚjspÒ³ÃæÉÏ
 ½«Í¼Æ¬µÄÂ·¾¶·Åµ½Êý¾Ý¿âÖÐ£¬ÓÃel±í´ïÊ½Ö±½ÓÔÚjspÒ³Ãæ½âÎö¼´¿ÉµÃµ½Í¼Æ¬
-4.Èç¹ûÊÇÌû×ÓÖÐ¼ÈÓÐÎÄ×ÖÓÖÓÐÍ¼Æ¬£¬¸ÃÔõÃ´´¦Àí²ÅÄÜÊµÏÖÊý¾ÝµÄÕý³£ÏÔÊ¾
+***4.Èç¹ûÊÇÌû×ÓÖÐ¼ÈÓÐÎÄ×ÖÓÖÓÐÍ¼Æ¬£¬¸ÃÔõÃ´´¦Àí²ÅÄÜÊµÏÖÊý¾ÝµÄÕý³£ÏÔÊ¾
+***5.ÀûÓÃajaxÊµÏÖµãÔÞ¹¦ÄÜ
+6.ÐèÒªÔÚÍê³ÉÒ»¸öÀàËÆ¶®ÇòµÛµÄÊ×Ò³£¬ºÍÒ»¸ö³äÖµÒ³Ãæ
+7.ÔÚÌû×ÓÏÂ·½ÊµÏÖÆÀÂÛ¹¦ÄÜ
+8.ÔÚdemoÒ³ÊµÏÖÌû×ÓµÄ·ÖÀàÏÔÊ¾
+9.µã»÷²»Í¬µÄÁªÈüÊµÏÖÌû×ÓµÄÉ¸Ñ¡ºÍÇòÔ±µÄÏÔÊ¾
+Íê³ÉÁËºóÌ¨µÄÉ¸Ñ¡¹¦ÄÜ£¬»¹ÐèÒªÍ¨¹ýµã»÷¶ÔÓ¦µÄ±êÇ©£¬´«µÝÏàÓ¦µÄ²ÎÊýÖµ£¬È»ºóÔÚÖÐ¼äµÄdivÏÔÊ¾¶ÔÓ¦Ò³ÃæµÄÐÅÏ¢£¬ÎÞÂÛÊÇ²ÎÊý»¹ÊÇÒ³Ãæ¶¼ÐèÒªÓÃµ½ajax¡£

@@ -50,4 +50,9 @@
 		set pv = pv + 1
 			where id = #{id}
 </update>
+<update id="updateLikeById" parameterType="int">
+	update visits
+		set like = like + 1
+			where id = #{id}
+</update>
 </mapper>
