@@ -105,6 +105,12 @@ public class User implements Serializable{
 		super();
 	}
 
+	public User(String name, String pwd) {
+		super();
+		this.name = name;
+		this.pwd = pwd;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", name=" + name + ", pwd=" + pwd + ", money=" + money + ", avatar=" + avatar
