@@ -65,4 +65,26 @@
 		from posts
 			where id = #{id}
 </select>
+<select id="findByLeagueId" parameterType="int" resultMap="getPostByRef">
+		SELECT *,visits.id vid,users.id uid,users.pv upv,leagues.id lid,leagues.name lname
+		from posts
+			INNER JOIN visits
+				on visits.id = posts.visitId
+					INNER JOIN users
+						on users.id = posts.userId
+							INNER JOIN leagues
+								on leagues.id = posts.leagueId
+									where posts.leagueId = #{id}
+</select>
+<select id="findByTitle" parameterType="string" resultMap="getPostByRef">
+	SELECT *,visits.id vid,users.id uid,users.pv upv,leagues.id lid,leagues.name lname
+		from posts
+			INNER JOIN visits
+				on visits.id = posts.visitId
+					INNER JOIN users
+						on users.id = posts.userId
+							INNER JOIN leagues
+								on leagues.id = posts.leagueId
+									where posts.title = #{title}
+</select>
 </mapper>

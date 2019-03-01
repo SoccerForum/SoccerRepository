@@ -73,12 +73,12 @@
 
 <body class="">
     <div class="bg-img">
-        <img src="C:\Users\11491\Desktop\workspace\bg.jpg" alt="">
+        <!-- <img src="images/bg.jpg" alt=""> -->
     </div>
     <div class="user-login">
     	
 	        <div class="back-title">
-	            <a href="https://www.baidu.com/link?url=4nRhn1FG3UPoluYNY-VafjQPzIa0mze-lLAnKeqqzLKcFphWlVduGdy6fao-piBf&wd=&eqid=bb627b5000041302000000025c3fd51d"> <b><</b> 返回上页</a>
+	            <!-- <a href="https://www.baidu.com/link?url=4nRhn1FG3UPoluYNY-VafjQPzIa0mze-lLAnKeqqzLKcFphWlVduGdy6fao-piBf&wd=&eqid=bb627b5000041302000000025c3fd51d"> <b><</b> 返回上页</a> -->
 	        </div>
         
         <div class="login-wrap">
@@ -87,7 +87,7 @@
 				   
 				   
 				   
-						<img src="https://passport.hupu.com/pc/images/logo.png" alt="">
+						<img src="images/qiutan.jpg" alt="">
 				   
 				
             </div>
@@ -99,7 +99,7 @@
 		                <ul>
 		                    <li>
 		                        <div class="ipt-wrap">
-		                            <input autocomplete="off" type="text" name="name" placeholder="登录名/手机号/邮箱" data-rule="empty" data-name="帐号" id="J_username" tabindex="1">
+		                            <input autocomplete="off" type="text"  name="name" placeholder="登录名/手机号/邮箱" data-rule="empty" data-name="帐号" id="J_username" tabindex="1">
 		                        </div>
 		                    </li>
 		                    <li id="J_insertVali">

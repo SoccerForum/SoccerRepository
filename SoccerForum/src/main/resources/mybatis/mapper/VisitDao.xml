@@ -45,4 +45,14 @@
 	INNER JOIN posts
 	on visits.id = posts.visitId
 </select>
+<update id="updateById" parameterType="int">
+	update visits
+		set pv = pv + 1
+			where id = #{id}
+</update>
+<update id="updateLikeById" parameterType="int">
+	update visits
+		set like = like + 1
+			where id = #{id}
+</update>
 </mapper>
