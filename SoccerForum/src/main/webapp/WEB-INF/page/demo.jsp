@@ -1945,10 +1945,10 @@
             <div class="nav">
                 <a href="#">足球场</a>
                 <a href="#">足球话题</a>
-                <a href="category" id="1">英超专区</a>
-                <a href="category" id="3">西甲专区</a>
-                <a href="category" id="2">意甲专区</a>
-                <a href="category" id="4">德意志城堡</a>
+                <a id="1">英超专区</a>
+                <a href="#" id="3">西甲专区</a>
+                <a href="#" id="2">意甲专区</a>
+                <a href="#" id="4">德意志城堡</a>
                 <a href="#">妖人银河系</a>
                 <a href="#">更多</a>             
             </div>
@@ -1961,7 +1961,7 @@
 			<div><font size="3" face="黑体" color="#AD0000"><b>&nbsp;&nbsp;主题市场</b></font></div>
 			
 			<c:forEach var="title" items="${posts}">
-<li class='list '><span class='time'>2012-07-16</span><a href="content?title=${title}">${title}</a></li> 
+<li class='list '><span class='time'>2012-07-16</span><a id = "aaaa" href="content?title=${title}">${title}</a></li> 
 				</c:forEach> 
 <br>
 	<div><font size="3" face="黑体" color="#AD0000"><b>&nbsp;&nbsp;主题市场</b></font></div>
@@ -2106,7 +2106,28 @@
     <script src="js/jquery_1.9.js"></script>
     <script src="js/main.js"></script>
     <script src="js/img-show.js"></script>
-
+<script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript">
+  	$("#1").click(function (){
+  		$.ajax({
+			type:"POST",
+			url:"category",
+			data:{"categoryid":1}, 
+			success:function(data) {
+				alert(data);
+				var a=JSON.parse(data);
+				var bli=$("<a></a>");
+				for(var i = 0;i<a.length;i++){
+					console.log(a[i].title);
+					var li= '<a>'+a[i].title+'</a>';
+					bli.append(li);
+				}
+				console.log(bli);
+				//$("#aaaa").replaceWith("<a id = "bli">bli</a>");
+			}
+		});
+  	});
+  </script>
 </body>
 </html>
 </body>

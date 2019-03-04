@@ -47,12 +47,12 @@
 </select>
 <update id="updateById" parameterType="int">
 	update visits
-		set pv = pv + 1
-			where id = #{id}
+		SET pv = pv + 1
+			WHERE id = #{id}
 </update>
 <update id="updateLikeById" parameterType="int">
-	update visits
-		set like = like + 1
-			where id = #{id}
+	UPDATE visits
+		SET `like` = `like` + 1
+			WHERE id = #{id}
 </update>
 </mapper>

@@ -43,7 +43,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				});
 			});
 </script>
-  <style> 
+<link rel="stylesheet" href="css/layui.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/layui.all.js"></script>
+ <style> 
 #divcss7{margin:0 auto;border:1px solid white;width:500px;height:1100px;float:left} 
 </style>
 <style> 
@@ -97,10 +100,10 @@ body{text-align:left}
           <td><hr /></td>
         </tr>
         <tr>
-          <td><p>姓名：%%%</p></td>
+          <td><p>姓名:${user.name}</p></td>
         </tr>
         <tr>
-          <td>性别：男</td>
+          <td>性别：${user.gender}</td>
         </tr>
         <tr>
           <td>年龄：19</td>
@@ -109,13 +112,10 @@ body{text-align:left}
           <td>家乡：甘肃省镇原县</td>
         </tr>
         <tr>
-          <td>就读院校：**大学</td>
+          <td>自我介绍：${user.bio}</td>
         </tr>
         <tr>
-          <td>就读专业：微电子科学与工程专业</td>
-        </tr>
-        <tr>
-          <td>学生证号：201614#######</td>
+          <td>个性签名：${user.sightml}</td>
         </tr>
         <tr>
           <td>兴趣爱好：听歌，打篮球</td>
@@ -133,12 +133,18 @@ body{text-align:left}
           <td>关键词：学生</td>
         </tr>
       </table>
-      <div class="divcss7-right"><img src="images/img1.jpg"> <br>
-      <a href="/">给自己上传一个拉风的头像</a>
+        <div class="layui-col-md3">
+        <div class="layui-upload layui-col-lg-offset2">
+            <div class="layui-upload-list">
+                <img class="layui-upload-img" id="demo1" src="images/img1.jpg" style="width: 80%">
+                <p id="demoText"></p>
+                <button type="button" class="layui-btn" id="test1">上传图片</button>
+            </div>
+        </div>
     </div>
 </div>
 
-  </div><div class="divcss6-right"> </div></div> 
+ </div><div class="divcss6-right"> </div></div> 
 <style> 
 .div-left{width:160px;height:1100px;border:1px solid #979797;background-color:#FFFFFF;float:left} 
 /* css注释说明：float:left设置居左靠左 */ 
@@ -189,6 +195,38 @@ body{text-align:left}
 				*/
 		$().UItoTop({ easingType: 'easeOutQuart' });
 });
+</script>
+<script>
+    layui.use('upload', function(){
+        var $ = layui.jquery,upload = layui.upload;
+        //普通图片上传
+        var uploadInst = upload.render({
+            elem: '#test1',
+            url: 'uploadHead.do',
+            before: function(obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+                    $('#demo1').attr('src', result); //图片链接（base64）
+                });
+            },
+            done: function(res){
+                //如果上传失败
+                if(res.code > 0){
+                    return layer.msg('上传失败');
+                }
+                //上传成功
+                layer.msg("上传成功");
+            },
+            error: function(){
+                //演示失败状态，并实现重传
+                var demoText = $('#demoText');
+                demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                });
+            }
+        });
+    });
 </script>
 <!----></div> 
 </div>

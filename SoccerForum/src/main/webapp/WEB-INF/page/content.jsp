@@ -36,7 +36,7 @@
             </div>
             <div class="op-list">
               <p class="like"><i class="layui-icon layui-icon-user"></i><span>${post.getVisit().pv}</span></p>
-              <p class="like"><i id = "likenum" class="layui-icon layui-icon-praise"></i><span>${post.getVisit().like}</span></p> 
+              <p class="like"><i class="layui-icon layui-icon-praise" id = "likenum"></i><span id='like'>${post.getVisit().like}</span></p> 
               <p class="edit"><i class="layui-icon layui-icon-reply-fill"></i><span>${post.getVisit().comment}</span></p>
             </div>
           </div>
@@ -114,23 +114,22 @@
       menu.off();
       menu.submit()
     })
-  </script>
-  <!--  
-  <script type="text/javascript" src="js/jquery.min.js">
-  	$("#likenum").click(function(){
-  		alert("1");
+  </script>  
+  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript">
+  	$("#likenum").click(function (){
   		$.ajax({
-			data:"${post.getTitle()}",
+			type:"POST",
 			url:"like",
-			data:{"name":post.getTitle()}, 
-			dataType:'string',
+			data:{"name":${post.getTitle()}}, 
 			success:function(data) {
-				alert(data);	
+				var likenum=JSON.parse(data).likenum;
+				console.log(JSON.parse(data));
+				$("#like").text(likenum);	
 			}
 		});
   	});
   </script>
-  -->
   </article>
   <aside>
   	<br><br>
