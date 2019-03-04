@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.concurrent.SynchronousQueue;
 
 import javax.management.modelmbean.ModelMBeanAttributeInfo;
+import javax.naming.event.NamespaceChangeListener;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -111,16 +112,74 @@ public class TestController {
 		String jsString = gson.toJson(map);
 		return jsString;
 	}
-	@RequestMapping("/category")
-	@ResponseBody
-	public String toCategory(String categoryid){
-		int id = Integer.parseInt(categoryid);
-		List<Post> posts = postDao.findByLeagueId(id);
-		System.out.println(posts);
-		Gson gson = new Gson();
-		String jsString = gson.toJson(posts);
-		System.out.println(jsString);
-		return jsString;
+	
+	//对应demo中#1的ajax，实现筛选后替换原来的帖子内容
+//	@RequestMapping("/category")
+//	@ResponseBody
+//	public String toCategory(String categoryid){
+//		int id = Integer.parseInt(categoryid);
+//		List<Post> posts = postDao.findByLeagueId(3);
+//		//System.out.println(posts);
+//		Gson gson = new Gson();
+//		String jsString = gson.toJson(posts);
+//		//System.out.println(jsString);
+//		return jsString;
+//	}
+	//转到英超界面
+	@RequestMapping("/yingchao")
+	public String toYingchao(User user,Model model,String name){
+		List<Post> post = postDao.findByLeagueId(1);
+		//System.out.println(post);
+		List<String> posts = new ArrayList<String>();
+		for(int i = 0;i < post.size();i++){
+			String a = post.get(i).getTitle();
+			//System.out.println(a);
+			posts.add(a);
+		}
+		model.addAttribute("posts",posts);
+ 		return "yingchao";
+	}
+	//转到西甲界面
+	@RequestMapping("/xijia")
+	public String toXijia(User user,Model model,String name){
+		List<Post> post = postDao.findByLeagueId(3);
+		//System.out.println(post);
+		List<String> posts = new ArrayList<String>();
+		for(int i = 0;i < post.size();i++){
+			String a = post.get(i).getTitle();
+			//System.out.println(a);
+			posts.add(a);
+		}
+		model.addAttribute("posts",posts);
+ 		return "xijia";
+	}
+	//转到意甲界面
+	@RequestMapping("/yijia")
+	public String toYijia(User user,Model model,String name){
+		List<Post> post = postDao.findByLeagueId(2);
+		//System.out.println(post);
+		List<String> posts = new ArrayList<String>();
+		for(int i = 0;i < post.size();i++){
+			String a = post.get(i).getTitle();
+			//System.out.println(a);
+			posts.add(a);
+		}
+		model.addAttribute("posts",posts);
+ 		return "yijia";
+	}
+	//转到德甲界面
+	@RequestMapping("/dejia")
+	public String toDejia(User user,Model model,String name){
+		List<Post> post = postDao.findByLeagueId(4);
+		//System.out.println(post);
+		List<String> posts = new ArrayList<String>();
+		for(int i = 0;i < post.size();i++){
+			String a = post.get(i).getTitle();
+			//System.out.println(a);
+			posts.add(a);
+		}
+		model.addAttribute("posts",posts);
+ 		return "dejia";
 	}
 	//转到个人首页
 	@RequestMapping("/user")

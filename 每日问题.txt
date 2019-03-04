@@ -78,9 +78,121 @@ controller代码
 6.需要在完成一个类似懂球帝的首页，和一个充值页面
 ***7.在帖子下方实现评论功能
 8.在demo页实现帖子的分类显示
-9.点击不同的联赛实现帖子的筛选和球员的显示
+***9.点击不同的联赛实现帖子的筛选和球员的显示
 完成了后台的筛选功能，还需要通过点击对应的标签，传递相应的参数值，然后在中间的div显示对应页面的信息，无论是参数还是页面都需要用到ajax。
 2019/3/4
 1.除了完成以上ajax页面的跳转，我还需要加入充值|赞赏功能。
 2.在个人页面实现信息的获取和图片的上传
+首先在pom.xml中增加commons-fileupload，javax.servlet-api两个依赖
+在jsp页面添加layui.css，jquery.min.js,layui.all.js
+核心代码：
+<div class="layui-col-md3">
+        
+<div class="layui-upload layui-col-lg-offset2">
+            
+<div class="layui-upload-list">
+                
+<img class="layui-upload-img" id="demo1" src="*.jpg" style="width: 50%">
+                <p id="demoText"></p>
+               
+	 <button type="button" class="layui-btn" id="test1">上传图片</button>
+           
+</div>
+       
+</div>
+    
+</div>
+function部分
+<script>
+    
+layui.use('upload', function(){
+       
+	 var $ = layui.jquery,upload = layui.upload;
+        //普通图片上传
+        var uploadInst = upload.render({
+           
+	 elem: '#test1',
+            
+	url: 'uploadHead.do',
+           
+	 before: function(obj){
+                //预读本地文件示例，不支持ie8
+                	obj.preview(function(index, file, result){
+                   
+	$('#demo1').attr('src', result); //图片链接（base64）
+                
+	});
+            
+	},
+            
+	done: function(res){
+                
+	//如果上传失败
+               
+	 if(res.code > 0){
+                    
+	return layer.msg('上传失败');
+               
+	 }
+               
+	 //上传成功
+               
+	 layer.msg("上传成功");
+           
+	 },
+            
+	error: function(){
+                //演示失败状态，并实现重传
+               
+	 var demoText = $('#demoText');
+                
+	demoText.html('<span style="color: #FF5722;">上传失败</span> <a class="layui-btn layui-btn-xs demo-reload">重试</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                
+});
+            
+}
+        
+});
+    
+});
+
+</script>
+在spring-config.xml加入
+<!--文件上传-->
+<bean id="multipartResolver"class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="maxUploadSize" value="20971520"/>
+    </bean>
+最后在controller中完善跳转代码
 3.首页实现球队信息的呈现和球员信息
+4.ajax实现div内容的替换
+<script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript">
+  	$("#1").click(function (){
+  		$.ajax({
+			type:"POST",
+			url:"category",
+			data:{"categoryid":1}, 
+			success:function(data) {
+				//alert(data);
+				var a=JSON.parse(data);
+				var bli=$("<a></a>");
+				for(var i = 0;i<a.length;i++){
+					console.log(a[i].title);
+					var li= '<a href = content?title=' +a[i].title+ '>'+a[i].title+'</a>';
+					//console.log(li);
+					bli.append(li);
+				}
+				//console.log(bli);
+				$("#aaaa").replaceWith(bli);
+			}
+		});
+  	});
+  </script>
+类似实现页面不跳转，内容筛选后重新显示，最后通过不同的jsp页面跳转实现
+
+（帮别人解决顺便回顾）项目运行出现404的错误：
+5.org.xml.sax.SAXParseException文件提前结束，一般不是配置文件的问题，出现的原因可能是mapper/*.xml中的sql语句有问题，会提示sqlsessionfactory创建失败，最简单直接的办法就是在testDao中测试，将sql语句在navicat运行测试
+6.如果测试的过程中出现了*.xml出现问题，除了检查sql语句之外，还要注意mapper namespace的路径是否正确。
