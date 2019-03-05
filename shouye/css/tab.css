@@ -5,7 +5,6 @@
 }
 
 .aui-nav-list-box {
-    overflow: hidden;
     zoom: 1; 
     border-bottom: none;
     z-index: 110;
