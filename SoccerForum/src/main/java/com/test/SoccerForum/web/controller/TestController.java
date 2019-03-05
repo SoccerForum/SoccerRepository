@@ -81,7 +81,7 @@ public class TestController {
 		}
 		List<String> list = new ArrayList<String>();
 		//System.out.println(res);
-		for(int i = 35;i <= 47;i++){
+		for(int i = 1;i <= 52;i++){
 			String post = postDao.findTitleById(i).getTitle();
 			list.add(post);
 		}
@@ -117,10 +117,11 @@ public class TestController {
 		String jsString = gson.toJson(map);
 		return jsString;
 	}
-	//点赞功能
+	//收藏功能
 		@RequestMapping("/collector")
 		@ResponseBody
 		public String toCollector(User user,String tname,String uname){
+			//System.out.println(tname);
 			int userId = userDao.findByName(uname).getId();
 			Collector collector = new Collector();
 			collector.setName(tname);
@@ -213,7 +214,7 @@ public class TestController {
 		User user = userDao.findByName(uname);
 		int userId = userDao.findByName(uname).getId();
 		List<Collector> collector = collectorDao.findByUserId(userId);
-		System.out.println(collector);
+		//System.out.println(collector);
 		model.addAttribute("user",user);
 		List<String> collectors = new ArrayList<String>();
 		for(int i = 0;i < collector.size();i++){

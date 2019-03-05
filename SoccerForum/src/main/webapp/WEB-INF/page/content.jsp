@@ -29,10 +29,10 @@
             </div>
             <div style="float:right"><font size="3"><span class="name">作者:${post.getUser().name}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="data">2018/06/06</span></font></div>
             <br><br><div><p class="text-cont">
-              一直听说牛油果吃起来像肥皂、肥肉，虽然很难吃，但是价格却很贵，我还是想尝试一下。今天公司新到了新西兰牛油果，这是新西兰牛油果是第一次在中国上市，个头比普通牛油果大了一倍，被誉为“超牛果”。好奇心驱使我尝了一颗，第一次吃牛油果没有见识，切开牛油果费了好大劲，切成了这样。
+              ${post.getContext()}
             </p></div>
             <div class="img-box">
-              <img src="${post.getContext()}">
+              <img src="">
             </div>
             <div class="op-list">
               <p class="like"><i class="layui-icon layui-icon-user"></i><span>${post.getVisit().pv}</span></p>
@@ -121,7 +121,7 @@
   		$.ajax({
 			type:"POST",
 			url:"like",
-			data:{"name":${post.getTitle()}}, 
+			data:{"name":"${post.getTitle()}"}, 
 			success:function(data) {
 				var likenum=JSON.parse(data).likenum;
 				console.log(JSON.parse(data));
@@ -136,7 +136,7 @@
 	  $.ajax({
 			type:"POST",
 			url:"collector",
-			data:{tname:${post.getTitle()},uname:"${user.name}"}, 
+			data:{tname:"${post.getTitle()}",uname:"${user.name}"}, 
 			success:function(data) {
 				//var likenum=JSON.parse(data).likenum;
 				//console.log(JSON.parse(data));

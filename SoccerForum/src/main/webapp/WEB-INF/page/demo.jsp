@@ -1958,7 +1958,7 @@
                 	<div class="index-news style-1">
 
 		<div class="active clear listel contour-2"><ol class='list-none metlist'>
-			<div><font size="3" face="黑体" color="#AD0000"><b>&nbsp;&nbsp;主题市场</b></font></div>
+			<div><font size="3" face="黑体" color="#AD0000"><b>&nbsp;&nbsp;热门帖子</b></font></div>
 
 			<c:forEach var="title" items="${posts}">
 <li class='list '><span class='time'>2012-07-16</span><a id = "aaaa" href="content?title=${title}&name=${user.name}">${title}</a></li> 

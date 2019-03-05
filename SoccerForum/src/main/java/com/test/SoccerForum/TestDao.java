@@ -79,9 +79,9 @@ public class TestDao {
 		List<Post> posts = postDao.findByLeagueId(1);
 		System.out.println(posts);
 		Collector collector2 = new Collector();
-		collector2.setName("4");
+		collector2.setName("德尚：外界觉得博格巴奇怪自大");
 		collector2.setUserid(1);
-		System.out.println(collectorDao.insert(collector));
+		System.out.println(collectorDao.insert(collector2));
 		
 //			JsonArray jarray = new JsonArray();
 //			JsonObject jobject = new JsonObject();

@@ -18,8 +18,10 @@ public class Integral implements Serializable{
     private Integer goal;
 
     private Integer fumble;
+    
+    private Integer GD;
 
-    private Integer score;
+	private Integer score;
 
     private Integer leagueid;
 
@@ -88,6 +90,14 @@ public class Integral implements Serializable{
     public void setFumble(Integer fumble) {
         this.fumble = fumble;
     }
+    
+    public Integer getGD() {
+		return GD;
+	}
+
+	public void setGD(Integer gD) {
+		GD = gD;
+	}
 
     public Integer getScore() {
         return score;
@@ -104,6 +114,14 @@ public class Integral implements Serializable{
     public void setLeagueid(Integer leagueid) {
         this.leagueid = leagueid;
     }
+    
+	public League getLeague() {
+		return league;
+	}
+
+	public void setLeague(League league) {
+		this.league = league;
+	}
 
 	public Integral() {
 		super();
@@ -112,7 +130,7 @@ public class Integral implements Serializable{
 	@Override
 	public String toString() {
 		return "Integral [id=" + id + ", name=" + name + ", session=" + session + ", win=" + win + ", equal=" + equal
-				+ ", lose=" + lose + ", goal=" + goal + ", fumble=" + fumble + ", score=" + score + ", "
+				+ ", lose=" + lose + ", goal=" + goal + ", fumble=" + fumble + ", GD=" + GD + ",score=" + score + ", "
 				+ "league=" + league.getName() + "]";
 	}
     

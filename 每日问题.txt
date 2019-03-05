@@ -196,3 +196,6 @@ layui.use('upload', function(){
 （帮别人解决顺便回顾）项目运行出现404的错误：
 5.org.xml.sax.SAXParseException文件提前结束，一般不是配置文件的问题，出现的原因可能是mapper/*.xml中的sql语句有问题，会提示sqlsessionfactory创建失败，最简单直接的办法就是在testDao中测试，将sql语句在navicat运行测试
 6.如果测试的过程中出现了*.xml出现问题，除了检查sql语句之外，还要注意mapper namespace的路径是否正确。
+3/5
+1.收藏帖子，将前端的帖子题目与用户id传到后台，判断是否收藏，没有的话加入到收藏表中，最后在个人空间页面展示
+2.在页面显示文字与图片，只需要将<img src = "图片路径">代替原来位置的图片，就可以实现原来的显示效果

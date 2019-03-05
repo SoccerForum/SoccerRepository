@@ -24,6 +24,8 @@ public class Post implements Serializable{
     
     private League league;
     
+    private String images;
+    
     public Integer getId() {
         return id;
     }
@@ -100,9 +102,18 @@ public class Post implements Serializable{
 		super();
 	}
 	
+	
+	public String getImages() {
+		return images;
+	}
+
+	public void setImages(String images) {
+		this.images = images;
+	}
+
 	@Override
 	public String toString() {
-		return "Post [id=" + id + ", title=" + title + ", context=" + context + ", visit=" + visit.getPv() + " " + visit.getComment() + " " + visit.getLike() + ", user=" + user.getName() + ", league=" + league.getName() + "]";
+		return "Post [id=" + id + ", title=" + title + ", context=" + context + ", images ="+images+",visit=" + visit.getPv() + " " + visit.getComment() + " " + visit.getLike() + ", user=" + user.getName() + ", league=" + league.getName() + "]";
 	}
         
 }
