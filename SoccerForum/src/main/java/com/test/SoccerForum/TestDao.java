@@ -78,6 +78,11 @@ public class TestDao {
 		System.out.println(visit);
 		List<Post> posts = postDao.findByLeagueId(1);
 		System.out.println(posts);
+		Collector collector2 = new Collector();
+		collector2.setName("4");
+		collector2.setUserid(1);
+		System.out.println(collectorDao.insert(collector));
+		
 //			JsonArray jarray = new JsonArray();
 //			JsonObject jobject = new JsonObject();
 //			jobject.addProperty("pid", post.getId());			

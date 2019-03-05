@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -135,7 +136,7 @@ body{text-align:left}
       </table>
         <div class="layui-col-md3">
         <div class="layui-upload layui-col-lg-offset2">
-            <div class="layui-upload-list">
+            <div class="layui-upload-list">	
                 <img class="layui-upload-img" id="demo1" src="images/img1.jpg" style="width: 80%">
                 <p id="demoText"></p>
                 <button type="button" class="layui-btn" id="test1">上传图片</button>
@@ -144,7 +145,12 @@ body{text-align:left}
     </div>
 </div>
 
- </div><div class="divcss6-right"> </div></div> 
+ </div><div class="divcss6-right"> 
+ 	收藏的帖子:
+            	<c:forEach var="title" items="${collectors}">
+<li class='list '><a id = "aaaa" href="content?title=${title}&name=${user.name}">${title}</a></li> 
+				</c:forEach> 
+ </div></div> 
 <style> 
 .div-left{width:160px;height:1100px;border:1px solid #979797;background-color:#FFFFFF;float:left} 
 /* css注释说明：float:left设置居左靠左 */ 
@@ -172,14 +178,13 @@ body{text-align:left}
 		<div class="wrap">
 		<div class="privacy-page">
 			<div class="col-md-8 content-left">
-			
 			</div>
 			<div class="col-md-4 side-bar">				
 
 			<div class="clearfix"></div>
 		</div>	
 		</div>
-		</div>
+	</div>
 	<!-- content-section-ends-here -->
 	<!-- footer-section-starts-here -->
 	<!-- footer-section-ends-here -->

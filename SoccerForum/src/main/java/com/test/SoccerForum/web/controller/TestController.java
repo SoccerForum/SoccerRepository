@@ -18,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.annotations.Param;
+import org.apache.ibatis.javassist.compiler.ast.MethodDecl;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.validator.PublicClassValidator;
 import org.omg.PortableServer.IdAssignmentPolicy;
@@ -37,10 +38,12 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.google.gson.Gson;
 import com.mysql.fabric.xmlrpc.base.Data;
+import com.test.SoccerForum.dao.CollectorDao;
 import com.test.SoccerForum.dao.MemberDao;
 import com.test.SoccerForum.dao.PostDao;
 import com.test.SoccerForum.dao.UserDao;
 import com.test.SoccerForum.dao.VisitDao;
+import com.test.SoccerForum.domain.po.Collector;
 import com.test.SoccerForum.domain.po.Member;
 import com.test.SoccerForum.domain.po.Post;
 import com.test.SoccerForum.domain.po.User;
@@ -61,6 +64,8 @@ public class TestController {
 	PostDao postDao;
 	@Autowired
 	VisitDao visitDao;
+	@Autowired
+	CollectorDao collectorDao;
 	//转到登录页
 	@RequestMapping("/login")
 	public String toLogin(){
@@ -112,6 +117,22 @@ public class TestController {
 		String jsString = gson.toJson(map);
 		return jsString;
 	}
+	//点赞功能
+		@RequestMapping("/collector")
+		@ResponseBody
+		public String toCollector(User user,String tname,String uname){
+			int userId = userDao.findByName(uname).getId();
+			Collector collector = new Collector();
+			collector.setName(tname);
+			collector.setUserid(userId);
+			if(collectorDao.findByNameAndId(tname,userId) != null){
+				return "failed";
+			}
+			else{
+				collectorDao.insert(collector);
+				return "success";
+			}
+		}
 	
 	//对应demo中#1的ajax，实现筛选后替换原来的帖子内容
 //	@RequestMapping("/category")
@@ -190,7 +211,17 @@ public class TestController {
 	@RequestMapping("/about")
 	public String toAbout(Model model){
 		User user = userDao.findByName(uname);
+		int userId = userDao.findByName(uname).getId();
+		List<Collector> collector = collectorDao.findByUserId(userId);
+		System.out.println(collector);
 		model.addAttribute("user",user);
+		List<String> collectors = new ArrayList<String>();
+		for(int i = 0;i < collector.size();i++){
+			String a = collector.get(i).getName();
+			//System.out.println(a);
+			collectors.add(a);
+		}
+		model.addAttribute("collectors",collectors);
 		return "about";
 	}
 	

@@ -1945,7 +1945,7 @@
             <div class="nav">
                 <a href="#">足球场</a>
                 <a href="#">足球话题</a>
-                <a hre="yingchao?name=${user.name}">英超专区</a>
+                <a href="yingchao?name=${user.name}">英超专区</a>
                 <a href="xijia?name=${user.name}" id="3">西甲专区</a>
                 <a href="yijia?name=${user.name}" id="2">意甲专区</a>
                 <a href="dejia?name=${user.name}" id="4">德意志城堡</a>

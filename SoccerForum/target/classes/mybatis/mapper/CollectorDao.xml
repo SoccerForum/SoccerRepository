@@ -17,10 +17,27 @@
 			on users.id = collectors.userId
 				where collectors.id = #{id}
 </select>
+<select id = "findByUserId" parameterType = "int" resultMap = "getCollectorByRef">
+	select *,users.id uid,users.name uname
+	from collectors
+		LEFT JOIN users
+			on users.id = collectors.userId
+				where collectors.userId = #{userid}
+</select>
+<select id = "findByNameAndId" resultMap = "getCollectorByRef">
+	select *,users.id uid,users.name uname
+	from collectors
+		LEFT JOIN users
+			on users.id = collectors.userId
+				where collectors.name = #{name,jdbcType=VARCHAR} and collectors.userId = #{userId,jdbcType=INTEGER}
+</select>
 <select id = "findAll" parameterType = "int" resultMap = "getCollectorByRef">
 	select *,users.id uid,users.name uname
 	from collectors
 		LEFT JOIN users
 			on users.id = collectors.userId
 </select>
+<insert id = "insert" parameterType="Collector">
+	insert into collectors(name,userId) values(#{name},#{userid})
+</insert>
 </mapper>
