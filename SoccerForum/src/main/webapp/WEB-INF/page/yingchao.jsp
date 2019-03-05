@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-    <title>社区首页</title>
+    <title>英超首页</title>
     <link rel="stylesheet" href="css/reset.css"/>
     <link rel="stylesheet" href="css/font-awesome.min.css"/>
     <link rel="stylesheet" href="css/demostyle.css"/>
@@ -1945,12 +1945,12 @@
             <div class="nav">
                 <a href="#">足球场</a>
                 <a href="#">足球话题</a>
-                <a href = "yingchao?name=${user.name}">英超专区</a>
+                <a hre="yingchao?name=${user.name}">英超专区</a>
                 <a href="xijia?name=${user.name}" id="3">西甲专区</a>
                 <a href="yijia?name=${user.name}" id="2">意甲专区</a>
                 <a href="dejia?name=${user.name}" id="4">德意志城堡</a>
                 <a href="#">妖人银河系</a>
-                <a href="#">更多</a>             
+                <a href="demo?name=${user.name}">更多</a>             
             </div>
             <!--show-box-->
             <div class="show-box">
@@ -1958,7 +1958,7 @@
                 	<div class="index-news style-1">
 
 		<div class="active clear listel contour-2"><ol class='list-none metlist'>
-			<div><font size="3" face="黑体" color="#AD0000"><b>&nbsp;&nbsp;主题市场</b></font></div>
+			<div><font size="3" face="黑体" color="#AD0000"><b>&nbsp;&nbsp;英超专区</b></font></div>
 
 			<c:forEach var="title" items="${posts}">
 <li class='list '><span class='time'>2012-07-16</span><a id = "aaaa" href="content?title=${title}">${title}</a></li> 

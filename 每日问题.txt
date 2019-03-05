@@ -42,9 +42,157 @@ b.ÀûÓÃlist£¬½«Êı¾İaddµ½listÖĞ£¬È»ºóÓÃmodel.attribute´«µ½Ç°¶Ë£¬È»ºóÓÃforeachµÄ·½·
 3.ÔõÃ´ÊµÏÖ½«Êı¾İ¿âÖĞ´æÈ¡µÄÍ¼Æ¬µÄ¾ø¶ÔÂ·¾¶×ª»¯ÎªÍ¼Æ¬ÏÔÊ¾ÔÚjspÒ³ÃæÉÏ
 ½«Í¼Æ¬µÄÂ·¾¶·Åµ½Êı¾İ¿âÖĞ£¬ÓÃel±í´ïÊ½Ö±½ÓÔÚjspÒ³Ãæ½âÎö¼´¿ÉµÃµ½Í¼Æ¬
 ***4.Èç¹ûÊÇÌû×ÓÖĞ¼ÈÓĞÎÄ×ÖÓÖÓĞÍ¼Æ¬£¬¸ÃÔõÃ´´¦Àí²ÅÄÜÊµÏÖÊı¾İµÄÕı³£ÏÔÊ¾
-***5.ÀûÓÃajaxÊµÏÖµãÔŞ¹¦ÄÜ
+5.ÀûÓÃajaxÊµÏÖµãÔŞ¹¦ÄÜ
+½«Í¼Æ¬µÄid = "likenum"
+ajax´úÂë
+<script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript">
+  	$("#likenum").click(function (){
+  		$.ajax({
+			data:"${post.getTitle()}",
+			url:"like",
+			data:{"name":${post.getTitle()}}, 
+			success:function(data) {
+				var likenum=JSON.parse(data).likenum;//ÔÚ½ÓÊÕ·şÎñÆ÷Êı¾İÊ±Ò»°ãÊÇ×Ö·û´®¡£ÎÒÃÇ¿ÉÒÔÊ¹ÓÃ JSON.parse() ·½·¨½«Êı¾İ×ª»»Îª JavaScript ¶ÔÏó
+				console.log(JSON.parse(data));
+				$("#like").text(likenum);//½«spanµÄidÉèÎªlike£¬ÎÄ±¾ÏÔÊ¾ÎªlikenumµÄÖµ£¬ÊµÏÖ²»Ë¢ĞÂµãÔŞÊı¼Ó1	
+			}
+		});
+  	});6-9
+  </script>
+controller´úÂë
+	@RequestMapping("/like")
+	@ResponseBody£¨Èç¹û²»¼ÓµÄ»°£¬·µ»ØµÄjson×Ö·û´®¾Í»á±¨getÇëÇóÊ§°Ü£©
+	public String toLike(String name){
+		Post post = postDao.findByTitle(name);
+		int res = visitDao.updateLikeById(post.getVisitid());
+		System.err.println(res);
+		Visit visit = visitDao.findById(post.getVisitid());
+		int likenum = visit.getLike();
+		Map< Object, Object> map=new HashMap<Object, Object>();
+		map.put("likenum", likenum);
+		Gson gson = new Gson();
+		String jsString = gson.toJson(map);
+		return jsString;
+	}
 6.ĞèÒªÔÚÍê³ÉÒ»¸öÀàËÆ¶®ÇòµÛµÄÊ×Ò³£¬ºÍÒ»¸ö³äÖµÒ³Ãæ
-7.ÔÚÌû×ÓÏÂ·½ÊµÏÖÆÀÂÛ¹¦ÄÜ
+***7.ÔÚÌû×ÓÏÂ·½ÊµÏÖÆÀÂÛ¹¦ÄÜ
 8.ÔÚdemoÒ³ÊµÏÖÌû×ÓµÄ·ÖÀàÏÔÊ¾
-9.µã»÷²»Í¬µÄÁªÈüÊµÏÖÌû×ÓµÄÉ¸Ñ¡ºÍÇòÔ±µÄÏÔÊ¾
+***9.µã»÷²»Í¬µÄÁªÈüÊµÏÖÌû×ÓµÄÉ¸Ñ¡ºÍÇòÔ±µÄÏÔÊ¾
 Íê³ÉÁËºóÌ¨µÄÉ¸Ñ¡¹¦ÄÜ£¬»¹ĞèÒªÍ¨¹ıµã»÷¶ÔÓ¦µÄ±êÇ©£¬´«µİÏàÓ¦µÄ²ÎÊıÖµ£¬È»ºóÔÚÖĞ¼äµÄdivÏÔÊ¾¶ÔÓ¦Ò³ÃæµÄĞÅÏ¢£¬ÎŞÂÛÊÇ²ÎÊı»¹ÊÇÒ³Ãæ¶¼ĞèÒªÓÃµ½ajax¡£
+2019/3/4
+1.³ıÁËÍê³ÉÒÔÉÏajaxÒ³ÃæµÄÌø×ª£¬ÎÒ»¹ĞèÒª¼ÓÈë³äÖµ|ÔŞÉÍ¹¦ÄÜ¡£
+2.ÔÚ¸öÈËÒ³ÃæÊµÏÖĞÅÏ¢µÄ»ñÈ¡ºÍÍ¼Æ¬µÄÉÏ´«
+Ê×ÏÈÔÚpom.xmlÖĞÔö¼Ócommons-fileupload£¬javax.servlet-apiÁ½¸öÒÀÀµ
+ÔÚjspÒ³ÃæÌí¼Ólayui.css£¬jquery.min.js,layui.all.js
+ºËĞÄ´úÂë£º
+<div class="layui-col-md3">
+        
+<div class="layui-upload layui-col-lg-offset2">
+            
+<div class="layui-upload-list">
+                
+<img class="layui-upload-img" id="demo1" src="*.jpg" style="width: 50%">
+                <p id="demoText"></p>
+               
+	 <button type="button" class="layui-btn" id="test1">ÉÏ´«Í¼Æ¬</button>
+           
+</div>
+       
+</div>
+    
+</div>
+function²¿·Ö
+<script>
+    
+layui.use('upload', function(){
+       
+	 var $ = layui.jquery,upload = layui.upload;
+        //ÆÕÍ¨Í¼Æ¬ÉÏ´«
+        var uploadInst = upload.render({
+           
+	 elem: '#test1',
+            
+	url: 'uploadHead.do',
+           
+	 before: function(obj){
+                //Ô¤¶Á±¾µØÎÄ¼şÊ¾Àı£¬²»Ö§³Öie8
+                	obj.preview(function(index, file, result){
+                   
+	$('#demo1').attr('src', result); //Í¼Æ¬Á´½Ó£¨base64£©
+                
+	});
+            
+	},
+            
+	done: function(res){
+                
+	//Èç¹ûÉÏ´«Ê§°Ü
+               
+	 if(res.code > 0){
+                    
+	return layer.msg('ÉÏ´«Ê§°Ü');
+               
+	 }
+               
+	 //ÉÏ´«³É¹¦
+               
+	 layer.msg("ÉÏ´«³É¹¦");
+           
+	 },
+            
+	error: function(){
+                //ÑİÊ¾Ê§°Ü×´Ì¬£¬²¢ÊµÏÖÖØ´«
+               
+	 var demoText = $('#demoText');
+                
+	demoText.html('<span style="color: #FF5722;">ÉÏ´«Ê§°Ü</span> <a class="layui-btn layui-btn-xs demo-reload">ÖØÊÔ</a>');
+                demoText.find('.demo-reload').on('click', function(){
+                    uploadInst.upload();
+                
+});
+            
+}
+        
+});
+    
+});
+
+</script>
+ÔÚspring-config.xml¼ÓÈë
+<!--ÎÄ¼şÉÏ´«-->
+<bean id="multipartResolver"class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="utf-8"/>
+        <property name="maxUploadSize" value="20971520"/>
+    </bean>
+×îºóÔÚcontrollerÖĞÍêÉÆÌø×ª´úÂë
+3.Ê×Ò³ÊµÏÖÇò¶ÓĞÅÏ¢µÄ³ÊÏÖºÍÇòÔ±ĞÅÏ¢
+4.ajaxÊµÏÖdivÄÚÈİµÄÌæ»»
+<script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript">
+  	$("#1").click(function (){
+  		$.ajax({
+			type:"POST",
+			url:"category",
+			data:{"categoryid":1}, 
+			success:function(data) {
+				//alert(data);
+				var a=JSON.parse(data);
+				var bli=$("<a></a>");
+				for(var i = 0;i<a.length;i++){
+					console.log(a[i].title);
+					var li= '<a href = content?title=' +a[i].title+ '>'+a[i].title+'</a>';
+					//console.log(li);
+					bli.append(li);
+				}
+				//console.log(bli);
+				$("#aaaa").replaceWith(bli);
+			}
+		});
+  	});
+  </script>
+ÀàËÆÊµÏÖÒ³Ãæ²»Ìø×ª£¬ÄÚÈİÉ¸Ñ¡ºóÖØĞÂÏÔÊ¾£¬×îºóÍ¨¹ı²»Í¬µÄjspÒ³ÃæÌø×ªÊµÏÖ
+
+£¨°ï±ğÈË½â¾öË³±ã»Ø¹Ë£©ÏîÄ¿ÔËĞĞ³öÏÖ404µÄ´íÎó£º
+5.org.xml.sax.SAXParseExceptionÎÄ¼şÌáÇ°½áÊø£¬Ò»°ã²»ÊÇÅäÖÃÎÄ¼şµÄÎÊÌâ£¬³öÏÖµÄÔ­Òò¿ÉÄÜÊÇmapper/*.xmlÖĞµÄsqlÓï¾äÓĞÎÊÌâ£¬»áÌáÊ¾sqlsessionfactory´´½¨Ê§°Ü£¬×î¼òµ¥Ö±½ÓµÄ°ì·¨¾ÍÊÇÔÚtestDaoÖĞ²âÊÔ£¬½«sqlÓï¾äÔÚnavicatÔËĞĞ²âÊÔ
+6.Èç¹û²âÊÔµÄ¹ı³ÌÖĞ³öÏÖÁË*.xml³öÏÖÎÊÌâ£¬³ıÁË¼ì²ésqlÓï¾äÖ®Íâ£¬»¹Òª×¢Òâmapper namespaceµÄÂ·¾¶ÊÇ·ñÕıÈ·¡£

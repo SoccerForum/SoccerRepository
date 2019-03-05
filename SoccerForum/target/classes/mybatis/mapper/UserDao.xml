@@ -40,6 +40,22 @@
 						LEFT JOIN collectors 
 							on collectors.userId = users.id
 </select>
+<select id="findByName" parameterType = "string" resultMap="getUserByRef">
+	SELECT *,posts.id pid,focususers.id fid,focususers.`name` fname,focususers.userId fuserId,collectors.id cid,collectors.`name` cname,collectors.userId cuserId
+	from users
+		LEFT JOIN posts
+			on posts.userId = users.id
+				LEFT JOIN focususers
+					on focususers.userId = users.id
+						LEFT JOIN collectors 
+							on collectors.userId = users.id
+								where users.name = #{name}
+</select>
+<update id="update" parameterType="User">
+	UPDATE users
+		SET `avatar` = #{avatar}
+			WHERE name = #{name}
+</update>
 <insert id = "insert" parameterType="User">
 	insert into users(name,pwd) values(#{name},#{pwd})
 </insert>
