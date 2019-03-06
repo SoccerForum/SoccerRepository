@@ -57,7 +57,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <style> 
 .divcss7-right{width:200px;border:1px solid #fff;margin-top:80px;margin-right:80px;float:right} 
 /* css注释：对divcss5-right设置float:right即可让对象靠右浮动 */ 
-</style> 
+</style>
+<style>
+p{
+	background-color:#d8dddf;
+	font-size:16px;
+}
+</style>
 <style type="text/css">
 #ee {
 	margin-left:25px;
@@ -101,7 +107,7 @@ body{text-align:left}
           <td><hr /></td>
         </tr>
         <tr>
-          <td><p>姓名:${user.name}</p></td>
+          <td>姓名:${user.name}</td>
         </tr>
         <tr>
           <td>性别：${user.gender}</td>
@@ -144,13 +150,15 @@ body{text-align:left}
         </div>
     </div>
 </div>
+ </div>
+<div class="divcss6-right">  
+<div><font size="3" face="黑体" color="#AD0000"><b>&nbsp;&nbsp;收藏的帖子</b></font></div>
 
- </div><div class="divcss6-right"> 
- 	收藏的帖子:
-            	<c:forEach var="title" items="${collectors}">
-<li class='list '><a id = "aaaa" href="content?title=${title}&name=${user.name}">${title}</a></li> 
+			<c:forEach var="title" items="${collectors}">
+<li class='list '><a id = "aaaa" href="content?title=${title}">${title}</a></li> 
 				</c:forEach> 
- </div></div> 
+ </div>
+ </div> 
 <style> 
 .div-left{width:160px;height:1100px;border:1px solid #979797;background-color:#FFFFFF;float:left} 
 /* css注释说明：float:left设置居左靠左 */ 

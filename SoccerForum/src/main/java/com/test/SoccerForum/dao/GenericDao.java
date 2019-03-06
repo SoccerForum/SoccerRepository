@@ -14,6 +14,7 @@ public interface GenericDao<Entity extends Serializable, ID extends Object> {
 	Entity findByName(String name);
 	Entity findTitleById(ID id);
 	Entity findByTitle(String title);
+	List<Entity> findByCommentTitle(String title);
 	List<Entity> findByLeagueId(ID id);
 	List<Entity> findByUserId(ID id);
 	//Entity findByNameAndId(String name,ID id);

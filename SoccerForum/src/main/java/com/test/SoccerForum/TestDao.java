@@ -14,6 +14,7 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.test.SoccerForum.dao.CollectorDao;
+import com.test.SoccerForum.dao.CommentDao;
 import com.test.SoccerForum.dao.FocususerDao;
 import com.test.SoccerForum.dao.IntegralDao;
 import com.test.SoccerForum.dao.LeagueDao;
@@ -23,6 +24,7 @@ import com.test.SoccerForum.dao.TeamDao;
 import com.test.SoccerForum.dao.UserDao;
 import com.test.SoccerForum.dao.VisitDao;
 import com.test.SoccerForum.domain.po.Collector;
+import com.test.SoccerForum.domain.po.Comment;
 import com.test.SoccerForum.domain.po.Focususer;
 import com.test.SoccerForum.domain.po.Integral;
 import com.test.SoccerForum.domain.po.League;
@@ -55,7 +57,8 @@ public class TestDao {
 	UserDao userDao;
 	@Autowired
 	VisitDao visitDao;
-	
+	@Autowired
+	CommentDao commentDao;
 	@Test
 	public void main(){
 		Collector collector = collectorDao.findById(1);
@@ -77,11 +80,13 @@ public class TestDao {
 		Visit visit = visitDao.findById(1);
 		System.out.println(visit);
 		List<Post> posts = postDao.findByLeagueId(1);
-		System.out.println(posts);
-		Collector collector2 = new Collector();
-		collector2.setName("德尚：外界觉得博格巴奇怪自大");
-		collector2.setUserid(1);
-		System.out.println(collectorDao.insert(collector2));
+		List<Comment> comment = commentDao.findByCommentTitle("恩波利主席：国米向我们询问18岁小将特拉奥雷");
+//		Comment comment2 = new Comment();
+//		comment2.setName("zluo");
+//		comment2.setTitle("1");
+//		comment2.setContent("11111");
+//		comment2.setAvatar("images/timg.jpg");
+//		System.out.println(commentDao.insert(comment2));
 		
 //			JsonArray jarray = new JsonArray();
 //			JsonObject jobject = new JsonObject();

@@ -23,6 +23,8 @@ import org.junit.runners.Parameterized.Parameter;
 import org.junit.validator.PublicClassValidator;
 import org.omg.PortableServer.IdAssignmentPolicy;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.parsing.EmptyReaderEventListener;
+import org.springframework.context.expression.MethodBasedEvaluationContext;
 import org.springframework.jdbc.core.metadata.PostgresCallMetaDataProvider;
 import org.springframework.jdbc.datasource.UserCredentialsDataSourceAdapter;
 import org.springframework.stereotype.Controller;
@@ -35,15 +37,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
+import org.w3c.dom.css.ElementCSSInlineStyle;
 
 import com.google.gson.Gson;
 import com.mysql.fabric.xmlrpc.base.Data;
 import com.test.SoccerForum.dao.CollectorDao;
+import com.test.SoccerForum.dao.CommentDao;
 import com.test.SoccerForum.dao.MemberDao;
 import com.test.SoccerForum.dao.PostDao;
 import com.test.SoccerForum.dao.UserDao;
 import com.test.SoccerForum.dao.VisitDao;
 import com.test.SoccerForum.domain.po.Collector;
+import com.test.SoccerForum.domain.po.Comment;
 import com.test.SoccerForum.domain.po.Member;
 import com.test.SoccerForum.domain.po.Post;
 import com.test.SoccerForum.domain.po.User;
@@ -66,6 +71,8 @@ public class TestController {
 	VisitDao visitDao;
 	@Autowired
 	CollectorDao collectorDao;
+	@Autowired
+	CommentDao commentDao;
 	//转到登录页
 	@RequestMapping("/login")
 	public String toLogin(){
@@ -96,10 +103,13 @@ public class TestController {
 	@RequestMapping("/content")
 	public String toContent(User user,String title,Model model){
 		Post post = postDao.findByTitle(title);
+		List<Comment> comments = commentDao.findByCommentTitle(title);
+		//System.out.println(visitDao.updateById(post.getVisitid()));
 		visitDao.updateById(post.getVisitid());
 //		Gson gson = new Gson();
 //		String jsString = gson.toJson(post);
 		model.addAttribute("post",post);
+		model.addAttribute("comments", comments);
 		return "content";
 	}
 	//点赞功能
@@ -133,6 +143,26 @@ public class TestController {
 				collectorDao.insert(collector);
 				return "success";
 			}
+		}
+	//评论功能
+		@RequestMapping("/comment")
+		@ResponseBody
+		public String toComment(String name,String title,String content2){
+			//System.out.println(content2);
+			if(content2 != null){
+			Comment comment2 = new Comment();
+			comment2.setName(name);
+			comment2.setTitle(title);
+			comment2.setContent(content2);
+			if(name.equals("zluo")) comment2.setAvatar("images/timg.jpg");
+			else if(name.equals("messi")) comment2.setAvatar("images/动物头像.jpg");
+			else if(name.equals("neymar"))comment2.setAvatar("images/疯狂动物城.jpg");
+			else if(name.equals("modric")) comment2.setAvatar("images/CR7.jpg");
+			else comment2.setAvatar("images/messi.jpg");
+			commentDao.insert(comment2);
+			return "success";
+			}
+			else return "failed";
 		}
 	
 	//对应demo中#1的ajax，实现筛选后替换原来的帖子内容
@@ -246,7 +276,6 @@ public class TestController {
                     //String realPath = session.getServletContext().getRealPath("myphoto");
                     //02也可以直接定义文件路径
                     String realPath = "C:\\Users\\11491\\Desktop\\workspace\\SoccerForum\\photo";
-
                     String photoFileName = new Date().getTime()+extName;
                     String descPath = realPath + "\\" + photoFileName;
                     file.transferTo(new File(realPath,photoFileName));

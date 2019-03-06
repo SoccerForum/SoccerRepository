@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -46,44 +47,29 @@
                 <form class="layui-form" action="">
                   <div class="layui-form-item layui-form-text">
                     <div class="layui-input-block">
-                      <textarea name="desc" class="layui-textarea"></textarea>
+                      <textarea name ="desc" id = "neirong" class="layui-textarea"></textarea>
                     </div>
                   </div>
                   <div class="layui-form-item">
                     <div class="layui-input-block" style="text-align: right;">
-                      <button class="layui-btn definite">确定</button>
+                      <a class="layui-btn definite" id = "queding">确定</a>
                     </div>
                   </div>
                 </form>
               </div>
-              <div class="list-cont">
+			<c:forEach var="comment" items="${comments}">
+					<div class="list-cont">
                 <div class="cont">
                   <div class="img">
-                    <img src="images/header.png" alt="">
+                    <img src="${comment.avatar}" alt="" width="50px" height="50px">
                   </div>
                   <div class="text">
-                    <p class="tit"><span class="name">${user.name}</span><span class="data">2018/06/06</span></p>
-                    <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
+                    <p class="tit"><span class="name">${comment.name}</span><span class="data">2018/06/06</span></p>
+                    <p class="ct">${comment.content}</p>
                   </div>
                 </div>
-                <div class="cont">
-                  <div class="img">
-                    <img src="images/header.png" alt="">
                   </div>
-                  <div class="text">
-                    <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                    <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
-                  </div>
-                </div>
-                <div class="cont">
-                  <div class="img">
-                    <img src="images/header.png" alt="">
-                  </div>
-                  <div class="text">
-                    <p class="tit"><span class="name">吳亦凡</span><span class="data">2018/06/06</span></p>
-                    <p class="ct">敢问大师，师从何方？上古高人呐逐一地看完你的作品后，我的心久久 不能平静！这世间怎么可能还有如此精辟的作品？我不敢相信自己的眼睛。自从改革开放以后，我就以为再也不会有任何作品能打动我，没想到今天看到这个如此精妙绝伦的作品好厉害！</p>
-                  </div>
-                </div>
+            </c:forEach> 
               </div>
           </div>
         </div>
@@ -91,7 +77,8 @@
       <div id="demo" style="text-align: center;"></div>
     </div>
   </div>
-  <script type="text/html" id="laytplCont">
+<!-- 
+<script type="text/html" id="laytplCont">
     <div class="cont">
       <div class="img">
         <img src="{{d.avatar}}" alt="">
@@ -102,8 +89,8 @@
       </div>
     </div>
   </script>
-
-  <script type="text/javascript" src="js/layui.js"></script>
+ --> 
+<!-- <script type="text/javascript" src="js/layui.js"></script>
   <script type="text/javascript">
    layui.config({
       base: 'js/'
@@ -114,7 +101,8 @@
       menu.off();
       menu.submit()
     })
-  </script>  
+  </script>
+-->  
   <script type="text/javascript" src="js/jquery.min.js"></script>
   <script type="text/javascript">
   	$("#likenum").click(function (){
@@ -130,7 +118,20 @@
 		});
   	});
   </script>
-  <script type="text/javascript" src="js/jquery.min.js"></script>
+  <script type="text/javascript">
+  $("#queding").click(function (){
+	  $.ajax({
+			type:"POST",
+			url:"comment",
+			data:{name:"${user.name}",title:"${post.getTitle()}",content2:$("#neirong").val()}, 
+			success:function(data) {
+				//var likenum=JSON.parse(data).likenum;
+				//console.log(JSON.parse(data));
+				alert(data);
+			}
+		});
+  	});
+  </script>
   <script type="text/javascript">
   $("#collnum").click(function (){
 	  $.ajax({
