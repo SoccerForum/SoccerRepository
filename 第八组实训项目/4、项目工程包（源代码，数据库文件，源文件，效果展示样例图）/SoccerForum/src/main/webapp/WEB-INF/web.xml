@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns="http://xmlns.jcp.org/xml/ns/javaee" 
+	
+	xsi:schemaLocation=
+		"http://xmlns.jcp.org/xml/ns/javaee 
+		http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" 
+	id="WebApp_ID" 
+	version="4.0">
+  <display-name>soccerforum</display-name>
+    <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+<context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>classpath*:/spring/spring-config.xml</param-value>
+</context-param>
+<!-- 声明使用spring管理整个的项目 -->
+<listener>
+	<listener-class>
+		org.springframework.web.context.ContextLoaderListener
+	</listener-class>
+</listener>
+<!-- 声明springmvc的相关配置 -->
+<!-- 声明当前项目的主控Servlet -->
+  <servlet>
+  	<!-- Spring MVC 主控Servlet -->
+  	<servlet-name>SoccerForum</servlet-name>
+  	<servlet-class>
+  		org.springframework.web.servlet.DispatcherServlet
+  	</servlet-class>
+  	<!-- 借助初始化参数contextConfigLocation自定义|设置Spring MVC配置文件的名称和位置 -->
+  	<init-param>
+  		<param-name>contextConfigLocation</param-name>
+  		<param-value>classpath*:/spring/spring-config.xml</param-value>
+  	</init-param>
+  	<!-- 主控Servlet跟随项目的启动而启动，不被URL显示调用 -->
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>SoccerForum</servlet-name>
+  	<!-- 表示拦截所有的url请求，并交给 名为 hello 的 servlet-class 指定的DispatcherServlet -->
+  	<url-pattern>/</url-pattern>
+  </servlet-mapping>
+  <filter>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>CharacterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+</web-app>

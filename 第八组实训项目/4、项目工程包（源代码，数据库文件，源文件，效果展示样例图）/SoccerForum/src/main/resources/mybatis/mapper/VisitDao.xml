@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.SoccerForum.dao.VisitDao">
+<!--  
+<select id="getPostById" parameterType="int" resultType="Post">
+	select *
+		from posts
+		where visitId = #{id}
+</select>
+<resultMap type="Visit" id="getVisitById" autoMapping="true">
+	<id column="id" property="id"/>
+	<association property="post" column="id" select="getPostById"/>
+</resultMap>
+<select id="findById" parameterType="int" resultMap="getVisitById">
+	select * 
+	from visits
+		where id = #{id}
+</select>
+
+
+<select id="findAll" resultMap="getVisitById">
+	select *
+		from visits
+</select>
+-->
+<!-- 使用表连接的方法查询 -->
+<resultMap type="Visit" id="getVisitByRef" autoMapping="true">
+	<id column="id" property="id"/>
+	<association property="post" javaType="Post" autoMapping="true">
+		<id column = "pid" property = "id"></id>
+	</association>
+</resultMap>
+<select id="findById" parameterType="int" resultMap="getVisitByRef">
+	select *,posts.id pid
+	from visits
+	INNER JOIN posts
+	on visits.id = posts.visitId
+	where visits.id = #{id}
+</select>
+<select id="findAll" resultMap="getVisitByRef">
+	select *,posts.id pid
+	from visits
+	INNER JOIN posts
+	on visits.id = posts.visitId
+</select>
+<update id="updateById" parameterType="int">
+	update visits
+		SET pv = pv + 1
+			WHERE id = #{id}
+</update>
+<update id="updateLikeById" parameterType="int">
+	UPDATE visits
+		SET `like` = `like` + 1
+			WHERE id = #{id}
+</update>
+</mapper>

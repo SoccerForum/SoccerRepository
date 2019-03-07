@@ -1,0 +1,8 @@
+/*全局样式*/
+.clear{ clear:both; }
+/*首页*/
+.style-1 .active{ background:#f0f0f0; padding:10px;}
+.index-news{ float:left; width:732px; margin-right:15px; margin-top:-10px;}
+.listel li{ margin:0px 5px; height:30px; line-height:30px; overflow:hidden; padding-left:13px; background:url(dt-1.gif) no-repeat left 12px; }
+.listel li a{ margin-right:5px; zoom:1;}
+.listel li span{ float:right; color:#666;}

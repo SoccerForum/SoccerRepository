@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.SoccerForum.dao.MemberDao">
+<!-- 两次查询的方式
+<select id="getTeamById" parameterType="int" resultType="Team">
+	select *
+		from Teams
+		where id = #{teamId}
+</select>
+<resultMap type="Member" id="getMemberById" autoMapping="true">
+	<id column="id" property="id"/>
+	<association property="team" column="teamId" select="getTeamById"/>
+</resultMap>
+<select id="findById" parameterType="int" resultMap="getMemberById">
+	select * 
+	from members
+		where id = #{id}
+</select>
+
+
+<select id="findAll" resultMap="getMemberById">
+	select *
+		from members
+</select>
+
+<select id="findByName" parameterType="string" resultMap="getMemberById">
+	select *
+		from members
+			where name = #{name}
+</select>
+ -->
+ <!-- 表连接查询的方式 -->
+ <resultMap type="Member" id="getMemberRef" autoMapping="true">
+ 	<id column = "id" property="id"/>
+ 	<association property="team" javaType="Team">
+ 		<id column = "tid" property = "id"/>
+ 		<result column = "tname" property="name"/>
+ 	</association>
+ </resultMap>
+ <select id="findById" parameterType="int" resultMap="getMemberRef">
+	SELECT*,teams.id tid,teams.name tname
+		from members
+		INNER JOIN teams
+		on members.teamId = teams.id
+		where members.id = #{id}
+</select>
+<select id="findAll" resultMap="getMemberRef">
+	SELECT*,teams.id tid,teams.name tname
+		from members
+		INNER JOIN teams
+		on members.teamId = teams.id
+</select>
+<select id="findByName" parameterType="string" resultMap="getMemberRef">
+	SELECT*,teams.id tid,teams.name tname
+		from members
+		INNER JOIN teams
+		on members.teamId = teams.id
+		where members.name = #{name}
+</select>
+</mapper>
